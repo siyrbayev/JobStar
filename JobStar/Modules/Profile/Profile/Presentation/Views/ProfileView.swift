@@ -14,7 +14,6 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
 //            .preferredColorScheme(.dark)
-            
     }
 }
 
@@ -22,7 +21,8 @@ struct ProfileView: View {
     
     // MARK: - StateObject
     
-    @StateObject var viewModel: ProfileViewModel = ProfileViewModel()
+    @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
+    @StateObject var createResumeViewModel: CreateResumeViewModel = CreateResumeViewModel()
     
     // MARK: - State
     
@@ -42,8 +42,11 @@ struct ProfileView: View {
                 }
             }
             .onAppear{
-                viewModel.onAppear()
+                profileViewModel.onAppear()
             }
+            .fullScreenCover(isPresented: $createResumeViewModel.isPresented, content: { 
+                CreateResumeView(viewModel: createResumeViewModel)
+            })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -86,7 +89,7 @@ struct ProfileView: View {
     var header: some View {
         VStack {
             HStack(alignment: .top) {
-                KFImageView(url: viewModel.user.profilePhoto ?? "", placeholder: Image(systemName: "person"))
+                KFImageView(url: profileViewModel.applicant.profilePhoto ?? "", placeholder: Image(systemName: "person"))
                     .background(
                         Circle()
                             .stroke(Color.bg_sc, lineWidth: 2)
@@ -97,16 +100,16 @@ struct ProfileView: View {
                     .padding()
                 
                 VStack(alignment: .leading) {
-                    Text("\(viewModel.user.firstName ?? "") \(viewModel.user.secondName ?? "")")
+                    Text("\(profileViewModel.applicant.firstName ?? "") \(profileViewModel.applicant.secondName ?? "")")
                         .font(.system(size: 20, weight: .medium))
                         .lineLimit(1)
                     
-                    Text(viewModel.user.email ?? "")
+                    Text(profileViewModel.applicant.email ?? "")
                         .font(.system(size: 14, weight: .medium))
                         .lineLimit(1)
                         .padding(.bottom, 8)
                     
-                    Text(viewModel.user.about ?? "")
+                    Text(profileViewModel.applicant.about ?? "")
                         .lineLimit(isMoreAboutShown ? 10 : 0)
                         .font(.system(size: 15, weight: .regular))
                     
@@ -114,7 +117,7 @@ struct ProfileView: View {
                         Text(isMoreAboutShown ? "less" : "more")
                             .foregroundColor(.lb_pr)
                     }
-                    .isHidden((viewModel.user.about ?? "").isEmpty, remove: true)
+                    .isHidden((profileViewModel.applicant.about ?? "").isEmpty, remove: true)
                 }
                 .padding([.trailing, .top], 8)
                 .foregroundColor(.tx_pr)
@@ -141,7 +144,7 @@ struct ProfileView: View {
                 Spacer()
             }
             
-            SkillsView(skills: viewModel.user.skills ?? [])
+            SkillsView(skills: profileViewModel.applicant.skills ?? [])
                 .padding()
         }
     }
@@ -179,7 +182,7 @@ struct ProfileView: View {
                 .cornerRadius(12)
                 .padding(.horizontal)
                 
-                ForEach(viewModel.user.resumes ?? []) { resume in
+                ForEach(profileViewModel.applicant.resumes ?? []) { resume in
                     ResumeRowItemView(resume: resume)
                         .padding(.horizontal)
                 }
@@ -202,7 +205,7 @@ extension ProfileView {
 private extension ProfileView {
     
     func logOut() {
-        viewModel.logOut()
+        profileViewModel.logOut()
     }
     
     func editUser() {
@@ -210,6 +213,6 @@ private extension ProfileView {
     }
     
     func addResume() {
-        viewModel.addResume()
+        createResumeViewModel.isPresented.toggle()
     }
 }

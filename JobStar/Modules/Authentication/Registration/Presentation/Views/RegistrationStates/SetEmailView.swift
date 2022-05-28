@@ -59,8 +59,7 @@ struct SetEmailView: View {
                 Button(action: dismissView) {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(.tx_pr)
-                        .font(.system(size: 22, weight: .medium))
-                        .imageScale(.large)
+                        .font(.system(size: 16, weight: .medium))
                 }
             }
         }

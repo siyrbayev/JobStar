@@ -56,6 +56,22 @@ struct Resume: Codable, Identifiable {
         totalWorkTime = try? container.decode(Double.self, forKey: .totalWorkTime)
     }
     
+    init(applicantId: String, title: String, firstName: String, secondName: String, totalWorkExperience: Int = 0, description: String, mobilePhone: String, email: String, createdDateTime: String, skills: [Skill], workTimePeriods: [WorkTimePeriods], totalWorkTime: Double = 0) {
+        self.id = ""
+        self.applicantId = applicantId
+        self.title = title
+        self.firstName = firstName
+        self.secondName = secondName
+        self.totalWorkExperience = totalWorkExperience
+        self.description = description
+        self.mobilePhone = mobilePhone
+        self.email = email
+        self.createdDateTime = createdDateTime
+        self.skills = skills
+        self.workTimePeriods = workTimePeriods
+        self.totalWorkTime = totalWorkTime
+    }
+    
     static func mock() -> Self? {
         let jsonResume = """
         {

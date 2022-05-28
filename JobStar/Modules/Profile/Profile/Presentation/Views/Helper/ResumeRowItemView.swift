@@ -51,7 +51,6 @@ struct ResumeRowItemView: View {
                 }
             }
             
-            
             Text(resume.description ?? "")
                 .multilineTextAlignment(.leading)
                 .foregroundColor(.tx_pr)
@@ -65,7 +64,7 @@ struct ResumeRowItemView: View {
             HStack {
                 Spacer()
                 
-                Text("Work experience: \(resume.totalWorkExperience ?? 0) years")
+                Text("Work experience: \(String(format: "%.0f", resume.totalWorkTime ?? 0)) years")
                     .foregroundColor(.tx_sc)
                     .font(.system(size: 12, weight: .semibold))
             }

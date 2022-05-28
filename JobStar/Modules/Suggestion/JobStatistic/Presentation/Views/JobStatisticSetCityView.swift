@@ -79,7 +79,7 @@ struct JobStatisticSetCityView: View {
             }
         }
         .onAppear {
-            viewModel.getCities()
+//            viewModel.getCities()
         }
     }
 }

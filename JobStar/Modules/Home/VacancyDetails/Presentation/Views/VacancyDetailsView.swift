@@ -165,9 +165,8 @@ struct VacancyDetailsView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: dismissView) {
                     Image(systemName: "chevron.backward")
-                        .foregroundColor(.accent_pr)
-                        .font(.system(size: 22, weight: .medium))
-                        .imageScale(.large)
+                        .foregroundColor(.tx_pr)
+                        .font(.system(size: 16, weight: .medium))
                 }
             }
         }

@@ -28,4 +28,11 @@ struct WorkTimePeriods: Codable {
         beginDateTime = try container.decodeIfPresent(String.self, forKey: .beginDateTime)
         endDateTime = try container.decodeIfPresent(String.self, forKey: .endDateTime)
     }
+    
+    init(positionName: String, beginDateTime: String, endDateTime: String) {
+        self.id = ""
+        self.positionName = positionName
+        self.beginDateTime = beginDateTime
+        self.endDateTime = endDateTime
+    }
 }

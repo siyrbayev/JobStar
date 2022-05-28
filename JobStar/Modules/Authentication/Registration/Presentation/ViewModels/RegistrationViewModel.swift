@@ -233,7 +233,7 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
             
             if let error = error {
                 print(error)
-                print(failResponse)
+                print(failResponse ?? "Fail response")
             }
             
             guard let token = successResponse?.token, !token.isEmpty,

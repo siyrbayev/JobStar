@@ -75,6 +75,19 @@
 		0799455A283C8B4100DB659C /* ExperienceRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994559283C8B4100DB659C /* ExperienceRequestModel.swift */; };
 		0799455C283C8BC100DB659C /* CompanyRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799455B283C8BC100DB659C /* CompanyRequestModel.swift */; };
 		0799455F283F664100DB659C /* Array++DoubleAndFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799455E283F664100DB659C /* Array++DoubleAndFloat.swift */; };
+		0799456A2840CB9400DB659C /* CreateResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945692840CB9400DB659C /* CreateResumeViewModel.swift */; };
+		0799456C2840CBAE00DB659C /* CreateResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799456B2840CBAE00DB659C /* CreateResumeView.swift */; };
+		0799456E2840CBCB00DB659C /* ResumeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799456D2840CBCB00DB659C /* ResumeNetworkManager.swift */; };
+		079945702840CCD000DB659C /* ResumeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799456F2840CCD000DB659C /* ResumeEndpoints.swift */; };
+		079945722840CF5A00DB659C /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945712840CF5A00DB659C /* NetworkManagerProtocol.swift */; };
+		079945742840CF8A00DB659C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945732840CF8A00DB659C /* NetworkResponse.swift */; };
+		0799457728415C6500DB659C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457628415C6500DB659C /* TextView.swift */; };
+		079945792841ED2700DB659C /* SkillNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945782841ED2700DB659C /* SkillNetworkManager.swift */; };
+		0799457B2841ED7F00DB659C /* SkillEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457A2841ED7F00DB659C /* SkillEndpoints.swift */; };
+		0799457E2841F18B00DB659C /* AllSkillsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457D2841F18B00DB659C /* AllSkillsListView.swift */; };
+		079945802841F52800DB659C /* AllSkillListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457F2841F52800DB659C /* AllSkillListViewModel.swift */; };
+		079945822842089100DB659C /* AlertControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945812842089000DB659C /* AlertControlView.swift */; };
+		0799458428422FBA00DB659C /* AddWorkExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799458328422FBA00DB659C /* AddWorkExperienceView.swift */; };
 		07A32A02281FD1350064609A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A32A01281FD1350064609A /* LoginViewModel.swift */; };
 		07A32A07281FDD530064609A /* TabBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A32A06281FDD530064609A /* TabBarConfigurator.swift */; };
 		07C18DB9282CD760003FE505 /* CompanySalaryStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C18DB8282CD760003FE505 /* CompanySalaryStatisticView.swift */; };
@@ -96,7 +109,6 @@
 		07D49F48282055D8003559D3 /* CustomUISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D49F47282055D8003559D3 /* CustomUISearchBar.swift */; };
 		07D49F4A28206331003559D3 /* 40.json in Resources */ = {isa = PBXBuildFile; fileRef = 07D49F4928206331003559D3 /* 40.json */; };
 		07D49F4D28207463003559D3 /* JobStatisticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D49F4C28207463003559D3 /* JobStatisticViewModel.swift */; };
-		07D49F512820746B003559D3 /* JobStatisticSetVacancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D49F4E2820746B003559D3 /* JobStatisticSetVacancyView.swift */; };
 		07D49F522820746B003559D3 /* JobStatisticSetCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D49F4F2820746B003559D3 /* JobStatisticSetCityView.swift */; };
 		07D49F532820746B003559D3 /* JobStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D49F502820746B003559D3 /* JobStatisticView.swift */; };
 		07D49F5B282074B9003559D3 /* CompanySalaryStatisticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D49F5A282074B9003559D3 /* CompanySalaryStatisticViewModel.swift */; };
@@ -176,6 +188,19 @@
 		07994559283C8B4100DB659C /* ExperienceRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceRequestModel.swift; sourceTree = "<group>"; };
 		0799455B283C8BC100DB659C /* CompanyRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyRequestModel.swift; sourceTree = "<group>"; };
 		0799455E283F664100DB659C /* Array++DoubleAndFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array++DoubleAndFloat.swift"; sourceTree = "<group>"; };
+		079945692840CB9400DB659C /* CreateResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateResumeViewModel.swift; sourceTree = "<group>"; };
+		0799456B2840CBAE00DB659C /* CreateResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateResumeView.swift; sourceTree = "<group>"; };
+		0799456D2840CBCB00DB659C /* ResumeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeNetworkManager.swift; sourceTree = "<group>"; };
+		0799456F2840CCD000DB659C /* ResumeEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeEndpoints.swift; sourceTree = "<group>"; };
+		079945712840CF5A00DB659C /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		079945732840CF8A00DB659C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		0799457628415C6500DB659C /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		079945782841ED2700DB659C /* SkillNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillNetworkManager.swift; sourceTree = "<group>"; };
+		0799457A2841ED7F00DB659C /* SkillEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillEndpoints.swift; sourceTree = "<group>"; };
+		0799457D2841F18B00DB659C /* AllSkillsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSkillsListView.swift; sourceTree = "<group>"; };
+		0799457F2841F52800DB659C /* AllSkillListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSkillListViewModel.swift; sourceTree = "<group>"; };
+		079945812842089000DB659C /* AlertControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControlView.swift; sourceTree = "<group>"; };
+		0799458328422FBA00DB659C /* AddWorkExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkExperienceView.swift; sourceTree = "<group>"; };
 		07A32A01281FD1350064609A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		07A32A06281FDD530064609A /* TabBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfigurator.swift; sourceTree = "<group>"; };
 		07C18DB8282CD760003FE505 /* CompanySalaryStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySalaryStatisticView.swift; sourceTree = "<group>"; };
@@ -197,7 +222,6 @@
 		07D49F47282055D8003559D3 /* CustomUISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISearchBar.swift; sourceTree = "<group>"; };
 		07D49F4928206331003559D3 /* 40.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 40.json; sourceTree = "<group>"; };
 		07D49F4C28207463003559D3 /* JobStatisticViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobStatisticViewModel.swift; sourceTree = "<group>"; };
-		07D49F4E2820746B003559D3 /* JobStatisticSetVacancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobStatisticSetVacancyView.swift; sourceTree = "<group>"; };
 		07D49F4F2820746B003559D3 /* JobStatisticSetCityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobStatisticSetCityView.swift; sourceTree = "<group>"; };
 		07D49F502820746B003559D3 /* JobStatisticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobStatisticView.swift; sourceTree = "<group>"; };
 		07D49F5A282074B9003559D3 /* CompanySalaryStatisticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySalaryStatisticViewModel.swift; sourceTree = "<group>"; };
@@ -448,8 +472,8 @@
 		0709D4E527E604D1000E0774 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				07A32A15281FE0140064609A /* Presentation */,
-				0709B2D02836CDE60005063E /* BusinessLogic */,
+				079945612840CB2F00DB659C /* Resume */,
+				079945602840CACC00DB659C /* Profile */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -585,7 +609,6 @@
 				07D49F63282BAFB5003559D3 /* Helpers */,
 				07D49F502820746B003559D3 /* JobStatisticView.swift */,
 				07D49F4F2820746B003559D3 /* JobStatisticSetCityView.swift */,
-				07D49F4E2820746B003559D3 /* JobStatisticSetVacancyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -701,7 +724,6 @@
 		078B640928031D6B00E3A257 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				078B640A28031D9500E3A257 /* UITextFieldView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -819,6 +841,95 @@
 				0799455E283F664100DB659C /* Array++DoubleAndFloat.swift */,
 			);
 			path = Array;
+			sourceTree = "<group>";
+		};
+		079945602840CACC00DB659C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				07A32A15281FE0140064609A /* Presentation */,
+				0709B2D02836CDE60005063E /* BusinessLogic */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		079945612840CB2F00DB659C /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				079945622840CB4100DB659C /* Presentation */,
+				079945632840CB4900DB659C /* BuisnessLogic */,
+			);
+			path = Resume;
+			sourceTree = "<group>";
+		};
+		079945622840CB4100DB659C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				079945682840CB8100DB659C /* ViewModel */,
+				079945672840CB7600DB659C /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		079945632840CB4900DB659C /* BuisnessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				079945662840CB5E00DB659C /* NetworkManager */,
+				079945652840CB5900DB659C /* Endpoints */,
+				079945642840CB5400DB659C /* Models */,
+			);
+			path = BuisnessLogic;
+			sourceTree = "<group>";
+		};
+		079945642840CB5400DB659C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		079945652840CB5900DB659C /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				0799456F2840CCD000DB659C /* ResumeEndpoints.swift */,
+				0799457A2841ED7F00DB659C /* SkillEndpoints.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		079945662840CB5E00DB659C /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0799456D2840CBCB00DB659C /* ResumeNetworkManager.swift */,
+				079945782841ED2700DB659C /* SkillNetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		079945672840CB7600DB659C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0799457C2841F15C00DB659C /* Helper */,
+				0799456B2840CBAE00DB659C /* CreateResumeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		079945682840CB8100DB659C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				079945692840CB9400DB659C /* CreateResumeViewModel.swift */,
+				0799457F2841F52800DB659C /* AllSkillListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0799457C2841F15C00DB659C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0799457D2841F18B00DB659C /* AllSkillsListView.swift */,
+				0799458328422FBA00DB659C /* AddWorkExperienceView.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		07A32A00281F9FF00064609A /* Core */ = {
@@ -1055,6 +1166,8 @@
 			isa = PBXGroup;
 			children = (
 				0709B2A72832A27B0005063E /* Result.swift */,
+				079945712840CF5A00DB659C /* NetworkManagerProtocol.swift */,
+				079945732840CF8A00DB659C /* NetworkResponse.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1120,7 +1233,10 @@
 		07D49F46282055CC003559D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				078B640A28031D9500E3A257 /* UITextFieldView.swift */,
 				07D49F47282055D8003559D3 /* CustomUISearchBar.swift */,
+				0799457628415C6500DB659C /* TextView.swift */,
+				079945812842089000DB659C /* AlertControlView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1324,10 +1440,13 @@
 				07C18DE228315722003FE505 /* ParameterEncoding.swift in Sources */,
 				0709B297283171EA0005063E /* LoginNetworkManager.swift in Sources */,
 				07A32A02281FD1350064609A /* LoginViewModel.swift in Sources */,
+				0799458428422FBA00DB659C /* AddWorkExperienceView.swift in Sources */,
 				0709D4DB27E35531000E0774 /* TabBarViewModel.swift in Sources */,
 				07D49F532820746B003559D3 /* JobStatisticView.swift in Sources */,
+				0799456A2840CB9400DB659C /* CreateResumeViewModel.swift in Sources */,
 				07A32A07281FDD530064609A /* TabBarConfigurator.swift in Sources */,
 				07994530283B488B00DB659C /* Applicant.swift in Sources */,
+				079945742840CF8A00DB659C /* NetworkResponse.swift in Sources */,
 				0709B2D728379A670005063E /* ProfileNetworkManager.swift in Sources */,
 				07D49F3128203A8A003559D3 /* JobStatistic.swift in Sources */,
 				07994542283B8AA100DB659C /* VacancyDetailsView.swift in Sources */,
@@ -1335,6 +1454,7 @@
 				0709D50027E61342000E0774 /* FavoritesView.swift in Sources */,
 				0709B2BA2833CC030005063E /* SetUsernameView.swift in Sources */,
 				07D49F3E28204875003559D3 /* Country.swift in Sources */,
+				0799457B2841ED7F00DB659C /* SkillEndpoints.swift in Sources */,
 				0709D4CA27E35411000E0774 /* ContentView.swift in Sources */,
 				07855A7A2838E688007BDEA7 /* VacancyRowItemView.swift in Sources */,
 				0709D4D727E3550B000E0774 /* TabBarView.swift in Sources */,
@@ -1351,15 +1471,19 @@
 				07D49F62282BAF58003559D3 /* AvarageCompanySalary.swift in Sources */,
 				07C18DE02831551C003FE505 /* HTTPTask.swift in Sources */,
 				0799454B283C22D500DB659C /* HomeEndpoints.swift in Sources */,
+				0799457E2841F18B00DB659C /* AllSkillsListView.swift in Sources */,
 				0709B2C728341BBB0005063E /* SuccessRegistrationView.swift in Sources */,
 				07C18DEC2831615C003FE505 /* Router.swift in Sources */,
 				0709B29A283180D20005063E /* LoginEndpoint.swift in Sources */,
+				0799457728415C6500DB659C /* TextView.swift in Sources */,
 				0709B2D52836CEBF0005063E /* User.swift in Sources */,
+				0799456C2840CBAE00DB659C /* CreateResumeView.swift in Sources */,
+				079945722840CF5A00DB659C /* NetworkManagerProtocol.swift in Sources */,
 				0709D4E027E5FF4B000E0774 /* HomeViewModel.swift in Sources */,
-				07D49F512820746B003559D3 /* JobStatisticSetVacancyView.swift in Sources */,
 				0709B2BC2833CC2E0005063E /* SetPasswordView.swift in Sources */,
 				07994532283B5CA600DB659C /* Skill.swift in Sources */,
 				0799454F283C295A00DB659C /* AnalyzedVacanciesRequestModel.swift in Sources */,
+				079945792841ED2700DB659C /* SkillNetworkManager.swift in Sources */,
 				07C18DB9282CD760003FE505 /* CompanySalaryStatisticView.swift in Sources */,
 				07994549283C229800DB659C /* HomeNetworkManager.swift in Sources */,
 				0709B29F28324E600005063E /* AppData.swift in Sources */,
@@ -1384,18 +1508,22 @@
 				0709D4F827E61049000E0774 /* SuggestionView.swift in Sources */,
 				0799452E283A6A7C00DB659C /* TagView.swift in Sources */,
 				0709D4C827E35411000E0774 /* JobStarApp.swift in Sources */,
+				079945702840CCD000DB659C /* ResumeEndpoints.swift in Sources */,
 				07D49F4D28207463003559D3 /* JobStatisticViewModel.swift in Sources */,
 				0709B2A12832A0620005063E /* LoginResponseModel.swift in Sources */,
 				0709D4F627E6102E000E0774 /* SuggestionViewModel.swift in Sources */,
 				0709B2AF2833A1C00005063E /* RegistrationView.swift in Sources */,
+				0799456E2840CBCB00DB659C /* ResumeNetworkManager.swift in Sources */,
 				07C18DE62831594C003FE505 /* URLParameterEncoder.swift in Sources */,
 				078B640B28031D9500E3A257 /* UITextFieldView.swift in Sources */,
 				07D49F48282055D8003559D3 /* CustomUISearchBar.swift in Sources */,
 				078B63FD2802CB7300E3A257 /* AppManager.swift in Sources */,
 				074C790A283A45CC00A4C483 /* ResumeRowItemView.swift in Sources */,
 				078B64052802CD6600E3A257 /* LoginView.swift in Sources */,
+				079945802841F52800DB659C /* AllSkillListViewModel.swift in Sources */,
 				0709B2CB283533430005063E /* SetEmailView.swift in Sources */,
 				07C18DBB282CD938003FE505 /* SuggestionNavigationRowItemView.swift in Sources */,
+				079945822842089100DB659C /* AlertControlView.swift in Sources */,
 				0709B2C528340C9F0005063E /* RegisterResponseModel.swift in Sources */,
 				07D49F452820531E003559D3 /* View++.swift in Sources */,
 				0709D51327E747C9000E0774 /* GraphCapsule.swift in Sources */,

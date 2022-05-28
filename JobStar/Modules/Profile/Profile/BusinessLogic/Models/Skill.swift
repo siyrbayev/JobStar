@@ -22,4 +22,9 @@ struct Skill: Codable, Identifiable, Equatable {
         id = try container.decodeIfPresent(String.self, forKey: .id)
         skill = try container.decodeIfPresent(String.self, forKey: .skill)
     }
+    
+    init(skill: String) {
+        self.id = ""
+        self.skill = skill
+    }
 }

@@ -87,7 +87,7 @@ extension LoginViewModel: LoginViewModelProtocol {
                     self?.errorMessagePrompt = error
                 }
                 
-                print(failResponse)
+                print(failResponse ?? "Faile Response")
             }
             
             guard let token = successResponse?.token, !token.isEmpty,

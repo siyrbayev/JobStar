@@ -12,12 +12,20 @@ struct CustomUISearchBar: UIViewRepresentable {
     
     @Binding var text: String
     
+    var placeholder: String = ""
+    var searchBarStyle: UISearchBar.Style = .minimal
+    
+    var onCancelButtonClicked: () -> Void = {}
+    
     func makeUIView(context: UIViewRepresentableContext<CustomUISearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         
+        searchBar.placeholder = placeholder
+        searchBar.searchBarStyle = searchBarStyle
         
         searchBar.layer.borderColor = Color.secondary.cgColor
         searchBar.tintColor = UIColor(Color.tx_pr)
+        
         
         searchBar.delegate = context.coordinator
         return searchBar
@@ -28,7 +36,7 @@ struct CustomUISearchBar: UIViewRepresentable {
     }
     
     func makeCoordinator() -> CustomUISearchBar.Coordinator {
-        return Coordinator(text: $text)
+        return Coordinator(text: $text, onCancelButtonClicked: onCancelButtonClicked)
     }
 }
 
@@ -38,8 +46,11 @@ extension CustomUISearchBar {
         
         @Binding var text: String
         
-        init(text: Binding<String>) {
+        var onCancelButtonClicked: () -> Void = {}
+        
+        init(text: Binding<String>, onCancelButtonClicked: @escaping () -> Void) {
             _text = text
+            self.onCancelButtonClicked = onCancelButtonClicked
         }
         
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -53,6 +64,8 @@ extension CustomUISearchBar {
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             searchBar.showsCancelButton = false
             searchBar.resignFirstResponder()
+            
+            onCancelButtonClicked()
         }
     }
 }
