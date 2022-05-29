@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ProfileNetworkManagerProtocol {
+protocol ProfileNetworkManagerProtocol: AnyObject {
     func getProfileInfo(completion: @escaping(_ applicant: Applicant?, _ error: String?) -> Void)
 }
 

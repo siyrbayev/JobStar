@@ -89,6 +89,10 @@ struct HomeView: View {
                         }
                     }
                 }
+                .isHidden(!viewModel.isFirstAppear)
+                .onAppear {
+                    viewModel.onAppear()
+                }
                 
                 ProgressView()
                     .font(.largeTitle)

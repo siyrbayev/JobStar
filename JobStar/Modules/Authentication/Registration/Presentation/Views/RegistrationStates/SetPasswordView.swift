@@ -228,7 +228,7 @@ struct SetPasswordView: View {
                 .padding(.vertical, 12)
                 .background(
                     Color.lb_sc
-                        .opacity(viewModel.isPasswordValid ? 1 : 0.5)
+                        .opacity(viewModel.isPasswordValid && viewModel.isConfirmPasswordValid ? 1 : 0.5)
                         .cornerRadius(12)
                 )
         }

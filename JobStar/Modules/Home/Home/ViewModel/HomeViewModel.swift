@@ -14,12 +14,14 @@ protocol HomeViewModelProtocol {
 
 final class HomeViewModel: ObservableObject {
     
-    private let networkManager: HomeNetworkManagerProtocol!
+    private let networkManager: HomeNetworkManagerProtocol
+    private let profileNetworkManager: ProfileNetworkManagerProtocol
     
     // MARK: - Published
     
     @Published var isLoading: Bool = false
     @Published var isCityListPresents: Bool = false
+    @Published var isFirstAppear: Bool = false
     
     @Published var resumes: [Resume] = AppData.applicant.resumes ?? []
     @Published var vacancies: [Vacancy] = []
@@ -35,10 +37,31 @@ final class HomeViewModel: ObservableObject {
     
     init() {
         networkManager = HomeNetworkManager()
+        profileNetworkManager = ProfileNetworkManager()
+        resumes = AppData.applicant.resumes ?? []
     }
     
     func onAppear() {
-        resumes = AppData.applicant.resumes ?? []
+        getProfileInfo()
+    }
+    
+    func getProfileInfo() {
+        profileNetworkManager.getProfileInfo { [weak self] applicant, error in
+            defer {
+                self?.isFirstAppear = true
+            }
+            
+            if let error = error {
+                print(error)
+            }
+            
+            guard let applicant = applicant else {
+                return
+            }
+            
+            AppData.applicant = applicant
+            self?.resumes = AppData.applicant.resumes ?? []
+        }
     }
 }
 
