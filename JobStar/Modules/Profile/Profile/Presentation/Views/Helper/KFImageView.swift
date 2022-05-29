@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
-import struct Kingfisher.KFImage
-import struct Kingfisher.AnyModifier
+//import struct Kingfisher.KFImage
+//import struct Kingfisher.AnyModifier
+import Kingfisher
 
 @ViewBuilder
 func KFImageView(url: String, placeholder: Image) -> KFImage {

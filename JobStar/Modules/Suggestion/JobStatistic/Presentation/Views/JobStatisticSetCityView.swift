@@ -10,11 +10,11 @@ import SwiftUI
 
 // MARK: - Preview
 
-struct JobStatisticSetCityView_Previews: PreviewProvider {
-    static var previews: some View {
-        JobStatisticSetCityView(viewModel: JobStatisticViewModel(), isPresented: .constant(false))
-    }
-}
+//struct JobStatisticSetCityView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        JobStatisticSetCityView(isPresented: .constant(false))
+//    }
+//}
 
 struct JobStatisticSetCityView: View {
     
@@ -22,7 +22,10 @@ struct JobStatisticSetCityView: View {
     
     // MARK: - ObservedObject
     
-    @ObservedObject var viewModel: JobStatisticViewModel
+    @Binding var cityName: String
+    @Binding var cities: [City]
+    
+    var onSetCity: (_ city: City) -> Void
     
     // MARK: - Binding
     
@@ -40,7 +43,7 @@ struct JobStatisticSetCityView: View {
                         .foregroundColor(.tx_sc)
                         .padding(.leading, 8)
                     
-                    CustomUITextField(placeHolder: "Search", text: $viewModel.cityNameToSearch, isFirstResponder: true)
+                    CustomUITextField(placeHolder: "Search", text: $cityName, isFirstResponder: true)
                         .foregroundColor(.tx_pr)
                         .font(.system(size: 16, weight: .medium))
                 }
@@ -58,10 +61,10 @@ struct JobStatisticSetCityView: View {
             .padding(.bottom)
             
             ScrollView {
-                ForEach(viewModel.cities.filter({viewModel.cityNameToSearch.isEmpty ? true : $0.name?.lowercased().contains(viewModel.cityNameToSearch.lowercased()) ?? false})) { city in
+                ForEach(cities.filter({cityName.isEmpty ? true : $0.name?.lowercased().contains(cityName.lowercased()) ?? false})) { city in
                     
                     Button {
-                        viewModel.setCity(city)
+                        onSetCity(city)
                         isPresented.toggle()
                     } label: {
                         VStack {

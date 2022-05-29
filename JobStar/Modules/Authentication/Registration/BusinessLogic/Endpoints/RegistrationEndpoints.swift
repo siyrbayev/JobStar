@@ -30,7 +30,7 @@ extension RegistrationEndpoints: EndpointTypeProtocol {
         case .register:
             return "/authentication/register"
         case .checkUsername:
-            return "/authentication/"
+            return "/authentication/checkusername"
         }
     }
     

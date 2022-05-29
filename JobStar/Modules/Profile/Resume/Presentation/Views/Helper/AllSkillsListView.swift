@@ -37,70 +37,134 @@ struct AllSkillsListView: View {
     // MARK: - Body
     
     var body: some View {
-        VStack(spacing: 0) {
-            CustomUISearchBar(text: $searchText, placeholder: "Search", onCancelButtonClicked: {
-                searchText = ""
-            })
+        ZStack {
+            VStack(spacing: 0) {
+                CustomUISearchBar(text: $searchText, placeholder: "Search", isFirstResponder: true, onCancelButtonClicked: {
+                    searchText = ""
+                })
                 .padding(.horizontal, 8)
-            
-            ScrollView {
-                AlertControlView(textString: $alertSkillName, showAlert: $isAlertActive, title: "Create custom Skill", message: "") {
-                    createResumeViewModel.skills.append(Skill(skill: alertSkillName))
-                    allSkillListViewModel.allSkills.insert(Skill(skill: alertSkillName), at: 0)
-                    alertSkillName.removeAll()
-                }
                 
-                VStack(spacing: 0) {
-                    ForEach(allSkillListViewModel.allSkills
-                        .filter({ searchText.isEmpty ? true : $0.skill?.lowercased().contains(searchText.lowercased()) ?? false })
-                    ) { skill in
-                        Button {
-                            if createResumeViewModel.skills.contains(skill) {
-                                removeSkill(skill)
-                            } else {
-                                addSkill(skill)
+                ScrollView {
+                    AlertControlView(textString: $alertSkillName, showAlert: $isAlertActive, title: "Create custom Skill", message: "") {
+                        let skill = Skill(skill: alertSkillName)
+                        createResumeViewModel.skills.append(skill)
+                        createResumeViewModel.customSkills.append(skill)
+                        alertSkillName.removeAll()
+                    }
+                    
+                    VStack(spacing: 20) {
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text("Custom skills")
+                                    .foregroundColor(.tx_off)
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal)
+                                    .isHidden(createResumeViewModel.customSkills.isEmpty, remove: true)
+                                
+                                Spacer()
                             }
-                        } label: {
-                            VStack(spacing: 0) {
-                                HStack {
-                                    Text(skill.skill ?? "")
-                                        .foregroundColor(.tx_pr)
-                                        .font(.system(size: 20, weight: .regular))
-                                        .padding(.top, 12)
-                                        .padding(.bottom, 4)
-                                    Spacer()
-                                    
-                                    Image(systemName: "checkmark")
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.tx_sc)
-                                        .isHidden(!createResumeViewModel.skills.contains(skill))
+                            
+                            
+                            ForEach(createResumeViewModel.customSkills
+                                .filter({ searchText.isEmpty ? true : $0.skill?.lowercased().contains(searchText.lowercased()) ?? false })
+                            ) { skill in
+                                Button {
+                                    if createResumeViewModel.skills.contains(skill) {
+                                        removeSkill(skill)
+                                    } else {
+                                        addSkill(skill)
+                                    }
+                                } label: {
+                                    VStack(spacing: 0) {
+                                        HStack {
+                                            Text(skill.skill ?? "")
+                                                .foregroundColor(.tx_pr)
+                                                .font(.system(size: 20, weight: .regular))
+                                                .padding(.top, 12)
+                                                .padding(.bottom, 4)
+                                            Spacer()
+                                            
+                                            Image(systemName: "checkmark")
+                                                .font(.system(size: 16))
+                                                .foregroundColor(.tx_sc)
+                                                .isHidden(!createResumeViewModel.skills.contains(skill))
+                                        }
+                                        Divider()
+                                            .foregroundColor(.tx_sc)
+                                    }
+                                    .padding(.horizontal)
                                 }
-                                Divider()
-                                    .foregroundColor(.tx_sc)
                             }
-                            .padding(.horizontal)
+                        }
+                        
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text("General skills")
+                                    .foregroundColor(.tx_off)
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal)
+                                    .isHidden(allSkillListViewModel.allSkills.isEmpty, remove: true)
+                                
+                                Spacer()
+                            }
+                            
+                            ForEach(allSkillListViewModel.allSkills
+                                .filter({ searchText.isEmpty ? true : $0.skill?.lowercased().contains(searchText.lowercased()) ?? false })
+                            ) { skill in
+                                Button {
+                                    if createResumeViewModel.skills.contains(skill) {
+                                        removeSkill(skill)
+                                    } else {
+                                        addSkill(skill)
+                                    }
+                                } label: {
+                                    VStack(spacing: 0) {
+                                        HStack {
+                                            Text(skill.skill ?? "")
+                                                .foregroundColor(.tx_pr)
+                                                .font(.system(size: 20, weight: .regular))
+                                                .padding(.top, 12)
+                                                .padding(.bottom, 4)
+                                            Spacer()
+                                            
+                                            Image(systemName: "checkmark")
+                                                .font(.system(size: 16))
+                                                .foregroundColor(.tx_sc)
+                                                .isHidden(!createResumeViewModel.skills.contains(skill))
+                                        }
+                                        Divider()
+                                            .foregroundColor(.tx_sc)
+                                    }
+                                    .padding(.horizontal)
+                                }
+                            }
                         }
                     }
+                    .padding(.bottom, 72)
                 }
-//                .padding(.top)
-                .padding(.bottom, 58)
             }
             
-            Button {
-                isAlertActive.toggle()
-            } label: {
-                HStack {
-                    Spacer()
-                    Text("+ Add custom Skill")
-                        .foregroundColor(.accent_pr)
-                        .font(.system(size: 18, weight: .semibold))
-                        .padding(.vertical, 12)
-                    Spacer()
+            VStack {
+                Spacer()
+                
+                Button {
+                    isAlertActive.toggle()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("+ Add custom Skill")
+                            .foregroundColor(.accent_pr)
+                            .font(.system(size: 18, weight: .semibold))
+                            .padding(.vertical, 12)
+                        Spacer()
+                    }
+                    .background(Color.gray.opacity(0.15))
+                    .cornerRadius(12)
                 }
-                .background(Color.bg_sc)
-                .cornerRadius(12)
+                .padding()
             }
-            .padding()
         }
         .onAppear {
             allSkillListViewModel.getAllSkills()

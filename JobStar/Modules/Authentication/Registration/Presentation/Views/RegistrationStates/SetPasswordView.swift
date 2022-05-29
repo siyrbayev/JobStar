@@ -97,8 +97,8 @@ struct SetPasswordView: View {
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(lineWidth: 0.5)
-                    .foregroundColor(viewModel.isPasswordValid ? .success : viewModel.passwordPrompt.isEmpty ? .none : .error)
+                    .stroke(lineWidth: 0.2)
+                    .foregroundColor(viewModel.isPasswordValid ? .success : viewModel.passwordPrompt.isEmpty ? .clear : .error)
                     .blur(radius: 2)
             )
             .background(
@@ -176,8 +176,8 @@ struct SetPasswordView: View {
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(lineWidth: 0.5)
-                    .foregroundColor(viewModel.isConfirmPasswordValid ? .success : viewModel.confirmPasswordPrompt.isEmpty ? .none : .error)
+                    .stroke(lineWidth: 0.2)
+                    .foregroundColor(viewModel.isConfirmPasswordValid ? .success : viewModel.confirmPasswordPrompt.isEmpty ? .clear : .error)
                     .blur(radius: 2)
             )
             .background(
@@ -222,10 +222,10 @@ struct SetPasswordView: View {
     
     var nextButton: some View {
         Button(action: register) {
-            Text("Register")
+            Text("Next")
                 .foregroundColor(.white)
                 .padding(.horizontal, 48)
-                .padding(.vertical, 24)
+                .padding(.vertical, 12)
                 .background(
                     Color.lb_sc
                         .opacity(viewModel.isPasswordValid ? 1 : 0.5)

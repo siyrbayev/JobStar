@@ -91,7 +91,7 @@ struct CustomUITextField: UIViewRepresentable {
 private extension CustomUITextField {
     
     func configureToolBarItems(_ textField: UITextField) {
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textField.frame.size.width, height: 44))
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(textField.doneButtonTapped(button:)))
@@ -104,8 +104,7 @@ private extension CustomUITextField {
 // MARK: - Additional Buttons
 
 extension UITextField {
-    @objc func doneButtonTapped(button:UIBarButtonItem) -> Void {
+    @objc func doneButtonTapped(button: UIBarButtonItem) -> Void {
        self.resignFirstResponder()
     }
-
 }

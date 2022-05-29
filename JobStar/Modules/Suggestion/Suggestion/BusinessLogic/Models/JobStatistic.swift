@@ -6,24 +6,24 @@
 //
 
 import Foundation
-
-struct JobStatistic: Codable {
-    let name: String?
-    let data: [String: Int]?
-    
-    static func mock() -> JobStatistic {
-        return JobStatistic(
-            name: "По Нур-Султану по запросу Java такая статистика зарплаты(KZT) на опыт работы",
-            data: [
-                "0" : 150358,
-                "1-3": 398725,
-                "3-6": 1430345,
-                "6+": 1635333
-            ]
-        )
-    }
-}
-
+//
+//struct JobStatistic: Codable {
+//    let name: String?
+//    let data: [String: Int]?
+//
+//    static func mock() -> JobStatistic {
+//        return JobStatistic(
+//            name: "По Нур-Султану по запросу Java такая статистика зарплаты(KZT) на опыт работы",
+//            data: [
+//                "0" : 150358,
+//                "1-3": 398725,
+//                "3-6": 1430345,
+//                "6+": 1635333
+//            ]
+//        )
+//    }
+//}
+//
 struct JobStatisticData: Codable, Identifiable {
     let id: Int
     let year: String

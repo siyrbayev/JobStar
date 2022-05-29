@@ -168,7 +168,7 @@ struct SetUsernameView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(lineWidth: 0.2)
-                .foregroundColor(viewModel.isUsernameValid ? .success : viewModel.usernamePrompt.isEmpty ? .none : .error)
+                .foregroundColor(viewModel.isUsernameValid ? .success : viewModel.usernamePrompt.isEmpty ? .clear : .error)
                 .blur(radius: 2)
         )
         .background(
@@ -187,10 +187,10 @@ struct SetUsernameView: View {
             Text("Next")
                 .foregroundColor(.white)
                 .padding(.horizontal, 48)
-                .padding(.vertical, 24)
+                .padding(.vertical, 12)
                 .background(
                     Color.lb_sc
-                        .opacity(!viewModel.isUsernameValid || viewModel.isLoading ? 0.5 : 1)
+                        .opacity(viewModel.isUsernameValid ? 1 : 0.5)
                         .cornerRadius(12)
                 )
         }

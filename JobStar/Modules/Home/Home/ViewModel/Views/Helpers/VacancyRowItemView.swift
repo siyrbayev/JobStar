@@ -65,6 +65,7 @@ struct VacancyRowItemView: View {
                 Spacer()
                 
                 KFImageView(url: vacancy.companyLogoUrl ?? "", placeholder: Image(systemName: "briefcase"))
+                    .cancelOnDisappear(true)
                     .frame(width: 28, height: 28)
                     .cornerRadius(.infinity)
                     .padding(.horizontal, 8)

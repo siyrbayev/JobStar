@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CompanyRequestModel: Codable {
+struct AvarageCompanySalaryRequest: Codable {
     let area: Int?
     let wordToFind: String?
 }

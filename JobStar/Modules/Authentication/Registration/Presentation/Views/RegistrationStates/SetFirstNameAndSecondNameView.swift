@@ -66,9 +66,6 @@ struct SetFirstNameAndSecondNameView: View {
                 .cornerRadius(12)
                 .disableAutocorrection(true)
                 .textInputAutocapitalization(.never)
-                .onSubmit {
-                    next()
-                }
                 .onChange(of: viewModel.firstName) { newValue in
                     viewModel.firstName = newValue.replacingOccurrences(of: " ", with: "")
                 }
@@ -82,12 +79,6 @@ struct SetFirstNameAndSecondNameView: View {
                     .frame(width: 40, height: 40)
             }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(lineWidth: 0.2)
-                .foregroundColor(viewModel.firstNamePrompt.isEmpty ? .none : .error)
-                .blur(radius: 2)
-        )
         .background(
             ZStack {
                 Color.fl_pr
@@ -119,9 +110,6 @@ struct SetFirstNameAndSecondNameView: View {
                 .cornerRadius(12)
                 .disableAutocorrection(true)
                 .textInputAutocapitalization(.never)
-                .onSubmit {
-                    next()
-                }
                 .onChange(of: viewModel.secondName) { newValue in
                     viewModel.secondName = newValue.replacingOccurrences(of: " ", with: "")
                 }
@@ -135,12 +123,6 @@ struct SetFirstNameAndSecondNameView: View {
                     .frame(width: 40, height: 40)
             }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(lineWidth: 0.2)
-                .foregroundColor(viewModel.secondNamePrompt.isEmpty ? .none : .error)
-                .blur(radius: 2)
-        )
         .background(
             ZStack {
                 Color.fl_pr
@@ -175,7 +157,6 @@ struct SetFirstNameAndSecondNameView: View {
                         .opacity(viewModel.isFirstNameAndSecondNameValid ? 1 : 0.5)
                         .cornerRadius(12)
                 )
-            
         }
         .padding()
         .disabled(!viewModel.isFirstNameAndSecondNameValid)
@@ -186,10 +167,6 @@ struct SetFirstNameAndSecondNameView: View {
 // MARK: - Private func
 
 private extension SetFirstNameAndSecondNameView {
-    
-    func next() {
-        
-    }
     
     func dismissView() {
         dismiss()

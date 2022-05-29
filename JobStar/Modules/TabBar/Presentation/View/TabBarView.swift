@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+extension EnvironmentValues {
+    
+}
+
 struct TabBarView: View {
     
     // MARK: - StateObject
@@ -29,7 +33,7 @@ struct TabBarView: View {
         TabView(selection: $selection) {
             home
             suggestion
-            favorites
+//            favorites
             profie
         }
         .accentColor(.accent_pr)
@@ -42,7 +46,7 @@ struct TabBarView: View {
     
     private var home: some View {
         
-        HomeView()
+        HomeView(tabSelection: $selection)
             .tabItem {
                 Label("Home", systemImage: isHome ? "house.fill" : "house")
                     .environment(\.symbolVariants, .none)
@@ -54,7 +58,7 @@ struct TabBarView: View {
     
     private var suggestion: some View {
         
-        SuggestionView()
+        SuggestionView(tabSelection: $selection)
             .tabItem {
                 Label("Suggestion", systemImage: isSuggestion ? "chart.line.uptrend.xyaxis.circle.fill" : "chart.line.uptrend.xyaxis.circle")
                     .environment(\.symbolVariants, .none)

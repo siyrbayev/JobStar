@@ -7,7 +7,20 @@
 
 import SwiftUI
 
+
+struct SuggestionView_Previews: PreviewProvider {
+    static var previews: some View {
+        SuggestionView(tabSelection: .constant(TabBarItemTags.suggestions.rawValue))
+            .preferredColorScheme(.dark)
+        
+    }
+}
+
 struct SuggestionView: View {
+    
+    // MARK: - Binding
+    
+    @Binding var tabSelection: Int
     
     // MARK: - StateObject
     
@@ -22,22 +35,66 @@ struct SuggestionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView {
+                if (AppData.applicant.resumes ?? []).isEmpty {
                     VStack {
-                        NavigationLink(
-                            destination: { JobStatisticView() },
-                            label: { SuggestionNavigationRowItemView(title: "Salary statistic") }
-                        )
-
-                        NavigationLink(
-                            destination: { CompanySalaryStatisticView() },
-                            label: { SuggestionNavigationRowItemView(title: "Companies Salary statistic") }
-                        )
+                        Spacer()
+                        Image(systemName: "doc.text.image")
+                            .padding(20)
+                            .foregroundColor(.accent_pr)
+                            .imageScale(.large)
+                            .font(.system(size: 64))
+                            .background(
+                                LinearGradient(
+                                    colors: [.bg_off, .bg_clear, .bg_off, .bg_clear],
+                                    startPoint: .center,
+                                    endPoint: .topLeading)
+                                .blur(radius: 4)
+                            )
+                            .cornerRadius(12)
+                            .padding(.bottom)
+                            .shadow(color: Color.tx_sc.opacity(0.4), radius: 64, x: 4, y: 6)
+                            .shadow(color: Color.accent_pr.opacity(0.15), radius: 64, x: -6, y: -6)
+                        
+                        
+                        Spacer()
+                        Text("Please create resume to find vacancies")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.tx_pr)
+                            .padding([.bottom, .horizontal])
+                        
+                        Button {
+                            tabSelection = TabBarItemTags.profile.rawValue
+                        } label: {
+                            
+                            Text("Create resume")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 36)
+                                .padding(.vertical, 18)
+                                .background(Color.lb_pr)
+                                .cornerRadius(12)
+                        }
+                        
+                        Spacer()
                     }
-                    .padding(.vertical)
-                    .padding(.horizontal, 8)
-                    
-                    Spacer()
+                } else {
+                    ScrollView {
+                        VStack {
+                            NavigationLink(
+                                destination: { JobStatisticView() },
+                                label: { SuggestionNavigationRowItemView(title: "Salary statistic") }
+                            )
+                            
+                            NavigationLink(
+                                destination: { CompanySalaryStatisticView() },
+                                label: { SuggestionNavigationRowItemView(title: "Companies Salary statistic") }
+                            )
+                        }
+                        .padding(.vertical)
+                        .padding(.horizontal, 8)
+                        
+                        Spacer()
+                    }
                 }
             }
             .onAppear {
@@ -53,56 +110,5 @@ struct SuggestionView: View {
             }
         }
     }
-    
-    // MARK: - suitableJobList
-    
-    //    var suitableJobList: some View {
-    //        Group {
-    //            VStack(alignment: .leading) {
-    //                if showDetail {
-    //                    ForEach(Array(viewModel.suitableJobs.enumerated()), id: \.0) { index, suitableJob in
-    //                        GraphCapsule(
-    //                            suitableJob: suitableJob,
-    //                            color: index == 0 ? .green : .lb_sc,
-    //                            screenWidth: UIScreen.main.bounds.width - 78 - 32
-    //                        )
-    //                    }
-    //                } else {
-    //                    if let suitableJob = viewModel.suitableJobs.first {
-    //                        GraphCapsule(
-    //                            suitableJob: suitableJob,
-    //                            color: .green,
-    //                            screenWidth: UIScreen.main.bounds.width - 78 - 32
-    //                        )
-    //                    }
-    //                }
-    //            }
-    //            .padding([.horizontal, .top])
-    //            .transition(.move(edge: .top))
-    //
-    //            HStack {
-    //                Spacer()
-    //
-    //                Button {
-    //                    withAnimation {
-    //                        showDetail.toggle()
-    //                    }
-    //                } label: {
-    //                    Label("Graph", systemImage: "chevron.right.circle")
-    //                        .labelStyle(.iconOnly)
-    //                        .imageScale(.large)
-    //                        .rotationEffect(.degrees(showDetail ? 270 : 90))
-    //                        .padding([.horizontal, .horizontal])
-    //                }
-    //            }
-    //        }
-    //    }
 }
 
-struct SuggestionView_Previews: PreviewProvider {
-    static var previews: some View {
-        SuggestionView()
-            .preferredColorScheme(.dark)
-        
-    }
-}

@@ -49,11 +49,15 @@ extension ProfileNetworkManager: ProfileNetworkManagerProtocol {
             switch result {
             case .success:
                 do {
-                    let response = try JSONDecoder().decode(Applicant.self, from: responseData)
+                    let decoder: JSONDecoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(DateFormatter.dateDecodingStrategy())
+                    
+                    let response = try decoder.decode(Applicant.self, from: responseData)
                     DispatchQueue.main.async {
                         completion(response, nil)
                     }
                 } catch {
+                    print(error.localizedDescription)
                     DispatchQueue.main.async {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }

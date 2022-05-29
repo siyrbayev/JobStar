@@ -46,6 +46,8 @@ struct JobStatisticView: View {
                     barChart
                         .disabled(viewModel.isJobStatisticLoading)
                     
+                    Spacer()
+                    
                     vacancies
                         .disabled(viewModel.isVacancyListLoading)
                 }
@@ -74,7 +76,7 @@ struct JobStatisticView: View {
         }
         .sheet(isPresented: $isPresented) {
             NavigationView {
-                JobStatisticSetCityView(viewModel: viewModel, isPresented: $isPresented)
+                JobStatisticSetCityView(cityName: $viewModel.cityNameToSearch, cities: $viewModel.cities, onSetCity: { viewModel.setCity($0)}, isPresented: $isPresented)
                     .navigationTitle("Chose city")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
@@ -94,17 +96,31 @@ struct JobStatisticView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: dismissView) {
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(.tx_pr)
-                        .font(.system(size: 16, weight: .medium))
+                if !isSearchBarShown {
+                    Button(action: dismissView) {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.tx_pr)
+                            .font(.system(size: 16, weight: .medium))
+                    }
                 }
             }
             
             ToolbarItem(placement: .principal) {
                 HStack(spacing: 0) {
                     HStack {
+                        if isSearchBarShown {
+                            Button(action: viewModel.isSearchWasSuccess ? toggleSearchBar : dismissView) {
+                                Image(systemName: "chevron.backward")
+                                    .foregroundColor(.tx_pr)
+                                    .font(.system(size: 16, weight: .medium))
+                            }
+                            .padding(.trailing, -2)
+                        }
+                        
                         CustomUITextField(placeHolder: "Search", text: $viewModel.wordToFind, isFirstResponder: true, shouldReturn: {
+                            viewModel.vacancies = []
+                            viewModel.totalPage = 0
+                            viewModel.page = 0
                             onSearch()
                             toggleSearchBar()
                         })
@@ -124,6 +140,7 @@ struct JobStatisticView: View {
                         .font(.system(size: 14, weight: .regular))
                         .foregroundColor(.accent_pr)
                 }
+                .disabled(viewModel.isVacancyListLoading || viewModel.isJobStatisticLoading)
                 .isHidden(isSearchBarShown, remove: true)
             }
         }
@@ -252,15 +269,28 @@ struct JobStatisticView: View {
                 ZStack {
                     ScrollView {
                         VStack {
-                            VStack {
-                                ForEach (viewModel.vacancies) { vacancy in
+                            LazyVStack {
+                                ForEach (viewModel.vacancies.indices, id: \.self) { index in
+                                    let vacancy = viewModel.vacancies[index]
                                     NavigationLink {
                                         VacancyDetailsView(vacancy: vacancy)
                                     } label: {
                                         VacancyRowItemView(isVIP: false, vacancy: vacancy)
                                             .padding(.horizontal)
+                                            .onAppear {
+                                                if !viewModel.isVacancyListLoading {
+                                                    if viewModel.vacancies.count - 2 == index {
+                                                        viewModel.searchVacancy()
+                                                    }
+                                                }
+                                            }
                                     }
                                 }
+                                
+                                ProgressView()
+                                    .font(.largeTitle)
+                                    .padding(.vertical)
+                                    .isHidden(!viewModel.isVacancyListLoading, remove: true)
                             }
                             .padding(.bottom, 12)
                             
@@ -316,34 +346,6 @@ struct JobStatisticView: View {
             .isHidden(!(viewModel.isJobStatisticLoading && !viewModel.isVacancyListLoading), remove: true)
         }
     }
-    
-    //    var searchButton: some View {
-    //        Group {
-    //            Button(action: searachButtonTapped) {
-    //                Label("Search", systemImage: "magnifyingglass")
-    //                    .foregroundColor(.white)
-    //                    .font(.system(size: 18, weight: .semibold))
-    //                    .padding(.horizontal, 24)
-    //                    .padding(.vertical)
-    //                    .background(
-    //                        LinearGradient(
-    //                            colors: [.lb_pr, .lb_sc, .lb_pr, .lb_pr],
-    //                            startPoint: .topLeading, endPoint: .topTrailing
-    //                        )
-    //                        .padding(-12)
-    //                        .blur(radius: 12)
-    //                    )
-    //                    .cornerRadius(12)
-    //            }
-    //            .padding(.horizontal)
-    //
-    //            Text("Search for job salary statistic")
-    //                .foregroundColor(.tx_sc)
-    //                .font(.system(size: 12, weight: .medium))
-    //                .padding(8)
-    //        }
-    //        .isHidden(viewModel.isSearchWasSuccess, remove: true)
-    //    }
 }
 
 // MARK: - Private func
@@ -361,7 +363,8 @@ private extension JobStatisticView {
     }
     
     func onSearch() {
-        viewModel.search()
+        viewModel.searchJobStatistic()
+        viewModel.searchVacancy()
     }
     
     func showMoreVacancies() {

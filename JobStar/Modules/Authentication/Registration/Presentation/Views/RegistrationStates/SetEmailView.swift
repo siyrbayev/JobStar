@@ -69,13 +69,6 @@ struct SetEmailView: View {
     
     var emailTextField: some View {
         HStack(spacing: 0) {
-            
-            NavigationLink(isActive: $viewModel.isEmailValid) {
-                SetFirstNameAndSecondNameView(viewModel: viewModel)
-            } label: {
-                EmptyView()
-            }
-              
             Image(systemName: "envelope")
                 .frame(width: 40, height: 40)
             
@@ -84,8 +77,8 @@ struct SetEmailView: View {
                 .cornerRadius(12)
                 .disableAutocorrection(true)
                 .textInputAutocapitalization(.never)
-                .onSubmit {
-                    next()
+                .onChange(of: viewModel.email) { newValue in
+                    viewModel.email = newValue.replacingOccurrences(of: " ", with: "")
                 }
             
             if !viewModel.emailPrompt.isEmpty {
@@ -97,12 +90,6 @@ struct SetEmailView: View {
                     .frame(width: 40, height: 40)
             }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(lineWidth: 0.5)
-                .foregroundColor(viewModel.emailPrompt.isEmpty ? .none : .error)
-                .blur(radius: 2)
-        )
         .background(
             ZStack {
                 Color.fl_pr
@@ -115,28 +102,27 @@ struct SetEmailView: View {
     // MARK: - NextButton
     
     var nextButton: some View {
-        Button(action: next) {
+        NavigationLink {
+            SetFirstNameAndSecondNameView(viewModel: viewModel)
+        } label: {
             Text("Next")
                 .foregroundColor(.white)
                 .padding(.horizontal, 48)
-                .padding(.vertical, 24)
+                .padding(.vertical, 12)
                 .background(
                     Color.lb_sc
+                        .opacity(viewModel.isEmailValid ? 1 : 0.5)
                         .cornerRadius(12)
                 )
         }
         .padding()
-        .disabled(viewModel.email.isEmpty)
+        .disabled(!viewModel.isEmailValid)
     }
 }
 
 // MARK: - Private func
 
 private extension SetEmailView {
-    
-    func next() {
-        viewModel.setEmail()
-    }
     
     func dismissView() {
         dismiss()

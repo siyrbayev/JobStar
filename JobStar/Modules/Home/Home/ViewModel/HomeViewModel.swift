@@ -28,7 +28,8 @@ final class HomeViewModel: ObservableObject {
     
     @Published var wordToFind: String = ""
     @Published var selectedCity: City = City(id: "159", parentId: "40", name: "Нур-Султан", areas: [])
-    
+    @Published var page: Int = 0
+    @Published var totalPage: Int = 0
     
     // MARK: - Init
     
@@ -37,7 +38,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func onAppear() {
-        
+        resumes = AppData.applicant.resumes ?? []
     }
 }
 
@@ -59,9 +60,9 @@ extension HomeViewModel {
     func onSubmitSearchBar() {
         
 //        vipVacancies = [Vacancy.mock(), Vacancy.mock(), Vacancy.mock()]
-//
-//        vacancies = [Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock()]
-//
+        guard totalPage >= page else {
+            return
+        }
         isLoading = true
 
         guard let areaId = selectedCity.id else {
@@ -76,8 +77,8 @@ extension HomeViewModel {
             }
         })
 
-        let requestModel = AnalyzedVacanciesRequestModel(area: Int(areaId), wordToFind: wordToFind, skillSet: skills, page: 0, itemsPerPage: nil)
-
+        let requestModel = AnalyzedVacanciesRequestModel(area: Int(areaId), wordToFind: wordToFind, skillSet: skills, page: page, itemsPerPage: nil)
+        
         var parameters: Parameters = [:]
 
         do {
@@ -90,10 +91,6 @@ extension HomeViewModel {
             print("Parameters empty")
             isLoading = false
             return
-        }
-        parameters.forEach { key, value in
-            print(key)
-            print(value)
         }
 
         getAnalyzedVacacncies(with: parameters)
@@ -118,7 +115,9 @@ extension HomeViewModel: HomeViewModelProtocol {
                 return
             }
             
-            self?.vacancies = vacancies
+            self?.totalPage += responseModel.totalPage ?? 0
+            self?.vacancies.append(contentsOf: vacancies)
+            self?.page += 1
         }
     }
 }

@@ -24,7 +24,7 @@ struct Skill: Codable, Identifiable, Equatable {
     }
     
     init(skill: String) {
-        self.id = ""
+        self.id = UUID().uuidString
         self.skill = skill
     }
 }

@@ -16,6 +16,10 @@ struct ContentView: View {
     @AppStorage("isFirstLaunch")
     private var isFirstLaunch: Bool = true
     
+    init() {
+        UITextView.appearance().backgroundColor = .clear
+    }
+    
     // MARK: - Body
     
     var body: some View {

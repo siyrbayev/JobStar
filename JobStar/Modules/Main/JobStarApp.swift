@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 @main
 struct JobStarApp: App {
@@ -18,7 +19,8 @@ struct JobStarApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()  
+            ContentView()
+                .attachPartialSheetToRoot()
         }
         .onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {

@@ -13,6 +13,7 @@ struct CustomUISearchBar: UIViewRepresentable {
     @Binding var text: String
     
     var placeholder: String = ""
+    var isFirstResponder: Bool = false
     var searchBarStyle: UISearchBar.Style = .minimal
     
     var onCancelButtonClicked: () -> Void = {}
@@ -33,6 +34,10 @@ struct CustomUISearchBar: UIViewRepresentable {
     
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<CustomUISearchBar>) {
         uiView.text = text
+        if isFirstResponder && !context.coordinator.didBecomeFirstResponder  {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
+        }
     }
     
     func makeCoordinator() -> CustomUISearchBar.Coordinator {
@@ -45,6 +50,7 @@ extension CustomUISearchBar {
     class Coordinator: NSObject, UISearchBarDelegate {
         
         @Binding var text: String
+        var didBecomeFirstResponder = false
         
         var onCancelButtonClicked: () -> Void = {}
         

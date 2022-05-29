@@ -25,16 +25,19 @@ final class JobStatisticViewModel: ObservableObject {
     
     @Published var jobAverageSalary: JobAverageSalary = JobAverageSalary(name: nil, data: nil)
     @Published var vacancies: [Vacancy] = []
+    @Published var page: Int = 0
+    @Published var totalPage: Int = 0
     
     @Published var wordToFind: String = ""
     @Published var cityNameToSearch: String = ""
     @Published var cities: [City] = []
     
-    @Published var city: City = City(id: "159", parentId: "40", name: "Нур-Султан", areas: []) {
-        didSet {
-            if !wordToFind.isEmpty { search() }
-        }
-    }
+    @Published var city: City = City(id: "159", parentId: "40", name: "Нур-Султан", areas: [])
+//    {
+//        didSet {
+//            if !wordToFind.isEmpty { search() }
+//        }
+//    }
         
     
     init() {
@@ -65,7 +68,6 @@ extension JobStatisticViewModel: JobStatisticViewModelProtocol {
             
             self?.isSearchWasSuccess = true
             self?.jobAverageSalary = responseModel
-            self?.vacancies = [Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock(), Vacancy.mock()]
         }
     }
     
@@ -85,7 +87,9 @@ extension JobStatisticViewModel: JobStatisticViewModelProtocol {
                 return
             }
             
-            self?.vacancies = vacancies
+            self?.totalPage = responseModel.totalPage ?? 0
+            self?.vacancies.append(contentsOf: vacancies)
+            self?.page += 1
         }
     }
 }
@@ -94,9 +98,44 @@ extension JobStatisticViewModel: JobStatisticViewModelProtocol {
 
 extension JobStatisticViewModel {
     
-    func search() {
-        isJobStatisticLoading = true
+    func searchVacancy() {
+        guard totalPage >= page else {
+            print("All done!")
+            return
+        }
         isVacancyListLoading = true
+        
+        guard let id = city.id, let cityId = Int(id)  else {
+            isVacancyListLoading = false
+            return
+        }
+        
+        var skills: [String] = []
+
+        AppData.applicant.skills?.forEach({
+            if let skill = $0.skill {
+                skills.append(skill as String)
+            }
+        })
+        
+        let vacancyRequestModel = AnalyzedVacanciesRequestModel(area: Int(cityId), wordToFind: wordToFind, skillSet: skills, page: page, itemsPerPage: 20)
+        
+        var vacancyParameters: Parameters = [:]
+        
+        do {
+            vacancyParameters = try DictionaryEncoder().encode(vacancyRequestModel)
+        } catch {
+            print(error.localizedDescription)
+            isVacancyListLoading = false
+            return
+        }
+        
+        getAnalyzedVacacncies(with: vacancyParameters)
+    }
+    
+    func searchJobStatistic() {
+        isJobStatisticLoading = true
+        
         guard let id = city.id, let cityId = Int(id)  else {
             isJobStatisticLoading = false
             isVacancyListLoading = false
@@ -112,24 +151,18 @@ extension JobStatisticViewModel {
         })
         
         let averageSalaryRequestModel = JobAverageSalaryRequestModel(area: cityId, wordToFind: wordToFind)
-
-        let vacancyRequestModel = AnalyzedVacanciesRequestModel(area: Int(cityId), wordToFind: wordToFind, skillSet: skills, page: 0, itemsPerPage: 20)
         
-        var vacancyParameters: Parameters = [:]
         var averageSalaryParameters: Parameters = [:]
         
         do {
             averageSalaryParameters = try DictionaryEncoder().encode(averageSalaryRequestModel)
-            vacancyParameters = try DictionaryEncoder().encode(vacancyRequestModel)
         } catch {
             print(error.localizedDescription)
             isJobStatisticLoading = false
-            isVacancyListLoading = false
             return
         }
         
         getExperience(with: averageSalaryParameters)
-        getAnalyzedVacacncies(with: vacancyParameters)
     }
     
     func setCity(_ city: City) {
@@ -156,19 +189,19 @@ extension JobStatisticViewModel {
 
 private extension JobStatisticViewModel {
     
-    
+    func loadJson(with fileName: String) -> [City]? {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(Country.self, from: data)
+                return jsonData.areas
+            } catch {
+                print("error:\(error)")
+            }
+        }
+        return nil
+    }
 }
 
-func loadJson(with fileName: String) -> [City]? {
-    if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let jsonData = try decoder.decode(Country.self, from: data)
-            return jsonData.areas
-        } catch {
-            print("error:\(error)")
-        }
-    }
-    return nil
-}
+

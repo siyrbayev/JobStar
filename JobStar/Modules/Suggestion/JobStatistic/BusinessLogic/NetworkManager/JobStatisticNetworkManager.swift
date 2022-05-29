@@ -10,7 +10,7 @@ import Foundation
 protocol JobStatisticNetworkManagerProtocol {
     
     func getExperience(parameters: Parameters, completion: @escaping(_ responseModel: JobAverageSalary?, _ error: String?) -> Void)
-    func getCompany(parameters: Parameters, completion: @escaping(_ vacancies: AnalyzedVaccanciesResponseModel?, _ error: String?) -> Void)
+    func getCompany(parameters: Parameters, completion: @escaping(_ vacancies: AvarageCompanySalary?, _ error: String?) -> Void)
     func getAnalyzedVacancies(parameters: Parameters, completion: @escaping(_ vacancies: AnalyzedVaccanciesResponseModel?, _ error: String?) -> Void)
 }
 
@@ -72,8 +72,51 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
         }
     }
     
-    func getCompany(parameters: Parameters, completion: @escaping (AnalyzedVaccanciesResponseModel?, String?) -> Void) {
-        
+    func getCompany(parameters: Parameters, completion: @escaping (AvarageCompanySalary?, String?) -> Void) {
+        router.request(.company(bodyParameters: parameters)) { [weak self] data, response, error in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    completion(nil, "Please check your network connection")
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    completion(nil, NetworkResponse.noResponse.rawValue)
+                }
+                return
+            }
+            guard let responseData = data else {
+                DispatchQueue.main.async {
+                    completion(nil, NetworkResponse.noData.rawValue)
+                }
+                return
+            }
+            
+            let result = self?.handleNetworkResponse(response: response)
+            
+            switch result {
+            case .success:
+                do {
+                    let response = try JSONDecoder().decode(AvarageCompanySalary.self, from: responseData)
+                    DispatchQueue.main.async {
+                        completion(response, nil)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                }
+            case .failure(let errorString):
+                DispatchQueue.main.async {
+                    completion(nil, errorString)
+                }
+            case .none:
+                DispatchQueue.main.async {
+                    completion(nil, NetworkResponse.failed.rawValue)
+                }
+            }
+        }
     }
     
     func getAnalyzedVacancies(parameters: Parameters, completion: @escaping (AnalyzedVaccanciesResponseModel?, String?) -> Void) {

@@ -36,4 +36,5 @@ extension Color {
     
     static let tx_pr: Color = Color("tx-pr")
     static let tx_sc: Color = Color("tx-sc")
+    static let tx_off: Color = Color("tx-off")
 }

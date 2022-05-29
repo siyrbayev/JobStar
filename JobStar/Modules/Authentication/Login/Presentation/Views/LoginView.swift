@@ -164,12 +164,6 @@ struct LoginView: View {
                     .frame(width: 40, height: 40)
             }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(lineWidth: 0.5)
-                .foregroundColor(viewModel.usernamePrompt.isEmpty ? .none : .error)
-                .blur(radius: 2)
-        )
         .background(
             ZStack {
                 Color.fl_pr
@@ -214,12 +208,6 @@ struct LoginView: View {
                     .frame(width: 40, height: 40)
             }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(lineWidth: 0.5)
-                .foregroundColor(viewModel.passwordPrompt.isEmpty ? .none : .error)
-                .blur(radius: 2)
-        )
         .background(
             ZStack {
                 Color.fl_pr

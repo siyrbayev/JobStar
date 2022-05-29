@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0707AA9A2842C56100F89754 /* DateFormat++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0707AA992842C56100F89754 /* DateFormat++.swift */; };
 		0709B297283171EA0005063E /* LoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B296283171EA0005063E /* LoginNetworkManager.swift */; };
 		0709B29A283180D20005063E /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B299283180D20005063E /* LoginEndpoint.swift */; };
 		0709B29D28324E3F0005063E /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B29C28324E3F0005063E /* DataStorage.swift */; };
@@ -81,13 +82,13 @@
 		079945702840CCD000DB659C /* ResumeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799456F2840CCD000DB659C /* ResumeEndpoints.swift */; };
 		079945722840CF5A00DB659C /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945712840CF5A00DB659C /* NetworkManagerProtocol.swift */; };
 		079945742840CF8A00DB659C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945732840CF8A00DB659C /* NetworkResponse.swift */; };
-		0799457728415C6500DB659C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457628415C6500DB659C /* TextView.swift */; };
+		0799457728415C6500DB659C /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457628415C6500DB659C /* CustomTextView.swift */; };
 		079945792841ED2700DB659C /* SkillNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945782841ED2700DB659C /* SkillNetworkManager.swift */; };
 		0799457B2841ED7F00DB659C /* SkillEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457A2841ED7F00DB659C /* SkillEndpoints.swift */; };
 		0799457E2841F18B00DB659C /* AllSkillsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457D2841F18B00DB659C /* AllSkillsListView.swift */; };
 		079945802841F52800DB659C /* AllSkillListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799457F2841F52800DB659C /* AllSkillListViewModel.swift */; };
 		079945822842089100DB659C /* AlertControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079945812842089000DB659C /* AlertControlView.swift */; };
-		0799458428422FBA00DB659C /* AddWorkExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799458328422FBA00DB659C /* AddWorkExperienceView.swift */; };
+		0799458428422FBA00DB659C /* AddWorkTimePeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799458328422FBA00DB659C /* AddWorkTimePeriodView.swift */; };
 		07A32A02281FD1350064609A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A32A01281FD1350064609A /* LoginViewModel.swift */; };
 		07A32A07281FDD530064609A /* TabBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A32A06281FDD530064609A /* TabBarConfigurator.swift */; };
 		07C18DB9282CD760003FE505 /* CompanySalaryStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C18DB8282CD760003FE505 /* CompanySalaryStatisticView.swift */; };
@@ -118,6 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0707AA992842C56100F89754 /* DateFormat++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormat++.swift"; sourceTree = "<group>"; };
 		0709B296283171EA0005063E /* LoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkManager.swift; sourceTree = "<group>"; };
 		0709B299283180D20005063E /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		0709B29C28324E3F0005063E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
@@ -194,13 +196,13 @@
 		0799456F2840CCD000DB659C /* ResumeEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeEndpoints.swift; sourceTree = "<group>"; };
 		079945712840CF5A00DB659C /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		079945732840CF8A00DB659C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
-		0799457628415C6500DB659C /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		0799457628415C6500DB659C /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		079945782841ED2700DB659C /* SkillNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillNetworkManager.swift; sourceTree = "<group>"; };
 		0799457A2841ED7F00DB659C /* SkillEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillEndpoints.swift; sourceTree = "<group>"; };
 		0799457D2841F18B00DB659C /* AllSkillsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSkillsListView.swift; sourceTree = "<group>"; };
 		0799457F2841F52800DB659C /* AllSkillListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSkillListViewModel.swift; sourceTree = "<group>"; };
 		079945812842089000DB659C /* AlertControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControlView.swift; sourceTree = "<group>"; };
-		0799458328422FBA00DB659C /* AddWorkExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkExperienceView.swift; sourceTree = "<group>"; };
+		0799458328422FBA00DB659C /* AddWorkTimePeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkTimePeriodView.swift; sourceTree = "<group>"; };
 		07A32A01281FD1350064609A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		07A32A06281FDD530064609A /* TabBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfigurator.swift; sourceTree = "<group>"; };
 		07C18DB8282CD760003FE505 /* CompanySalaryStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySalaryStatisticView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0707AA9B28438C0E00F89754 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		0707AA9C28438C2E00F89754 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		0707AA9D28438C3600F89754 /* Moodels */ = {
+			isa = PBXGroup;
+			children = (
+				0799455B283C8BC100DB659C /* CompanyRequestModel.swift */,
+				07D49F61282BAF58003559D3 /* AvarageCompanySalary.swift */,
+			);
+			path = Moodels;
+			sourceTree = "<group>";
+		};
+		0707AA9E2843948C00F89754 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		0709B29B28324E320005063E /* PropertyWrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +533,7 @@
 				0799455D283F662400DB659C /* Array */,
 				07D49F4328205313003559D3 /* View */,
 				078B64062802D3EB00E3A257 /* Color */,
+				0707AA992842C56100F89754 /* DateFormat++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -537,7 +570,6 @@
 			children = (
 				0709D51927E74929000E0774 /* SuitableJob.swift */,
 				07D49F3028203A8A003559D3 /* JobStatistic.swift */,
-				07D49F61282BAF58003559D3 /* AvarageCompanySalary.swift */,
 				07855A762838E54E007BDEA7 /* JobStatisticRequestModel.swift */,
 			);
 			path = Models;
@@ -598,7 +630,6 @@
 			children = (
 				07994557283C8B3300DB659C /* ExperienceResponseModel.swift */,
 				07994559283C8B4100DB659C /* ExperienceRequestModel.swift */,
-				0799455B283C8BC100DB659C /* CompanyRequestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -927,7 +958,7 @@
 			isa = PBXGroup;
 			children = (
 				0799457D2841F18B00DB659C /* AllSkillsListView.swift */,
-				0799458328422FBA00DB659C /* AddWorkExperienceView.swift */,
+				0799458328422FBA00DB659C /* AddWorkTimePeriodView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1235,7 +1266,7 @@
 			children = (
 				078B640A28031D9500E3A257 /* UITextFieldView.swift */,
 				07D49F47282055D8003559D3 /* CustomUISearchBar.swift */,
-				0799457628415C6500DB659C /* TextView.swift */,
+				0799457628415C6500DB659C /* CustomTextView.swift */,
 				079945812842089000DB659C /* AlertControlView.swift */,
 			);
 			path = View;
@@ -1262,6 +1293,9 @@
 		07D49F5528207480003559D3 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				0707AA9D28438C3600F89754 /* Moodels */,
+				0707AA9C28438C2E00F89754 /* Endpoints */,
+				0707AA9B28438C0E00F89754 /* NetworkManager */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -1277,6 +1311,7 @@
 		07D49F57282074A0003559D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0707AA9E2843948C00F89754 /* Helper */,
 				07C18DB8282CD760003FE505 /* CompanySalaryStatisticView.swift */,
 			);
 			path = View;
@@ -1440,7 +1475,7 @@
 				07C18DE228315722003FE505 /* ParameterEncoding.swift in Sources */,
 				0709B297283171EA0005063E /* LoginNetworkManager.swift in Sources */,
 				07A32A02281FD1350064609A /* LoginViewModel.swift in Sources */,
-				0799458428422FBA00DB659C /* AddWorkExperienceView.swift in Sources */,
+				0799458428422FBA00DB659C /* AddWorkTimePeriodView.swift in Sources */,
 				0709D4DB27E35531000E0774 /* TabBarViewModel.swift in Sources */,
 				07D49F532820746B003559D3 /* JobStatisticView.swift in Sources */,
 				0799456A2840CB9400DB659C /* CreateResumeViewModel.swift in Sources */,
@@ -1475,7 +1510,7 @@
 				0709B2C728341BBB0005063E /* SuccessRegistrationView.swift in Sources */,
 				07C18DEC2831615C003FE505 /* Router.swift in Sources */,
 				0709B29A283180D20005063E /* LoginEndpoint.swift in Sources */,
-				0799457728415C6500DB659C /* TextView.swift in Sources */,
+				0799457728415C6500DB659C /* CustomTextView.swift in Sources */,
 				0709B2D52836CEBF0005063E /* User.swift in Sources */,
 				0799456C2840CBAE00DB659C /* CreateResumeView.swift in Sources */,
 				079945722840CF5A00DB659C /* NetworkManagerProtocol.swift in Sources */,
@@ -1523,6 +1558,7 @@
 				079945802841F52800DB659C /* AllSkillListViewModel.swift in Sources */,
 				0709B2CB283533430005063E /* SetEmailView.swift in Sources */,
 				07C18DBB282CD938003FE505 /* SuggestionNavigationRowItemView.swift in Sources */,
+				0707AA9A2842C56100F89754 /* DateFormat++.swift in Sources */,
 				079945822842089100DB659C /* AlertControlView.swift in Sources */,
 				0709B2C528340C9F0005063E /* RegisterResponseModel.swift in Sources */,
 				07D49F452820531E003559D3 /* View++.swift in Sources */,

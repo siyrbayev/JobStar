@@ -22,10 +22,10 @@ struct ProfileView: View {
     // MARK: - StateObject
     
     @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
-    @StateObject var createResumeViewModel: CreateResumeViewModel = CreateResumeViewModel()
+//    @StateObject var createResumeViewModel: CreateResumeViewModel = CreateResumeViewModel()
     
     // MARK: - State
-    
+    @State private var isCreateResumePresented: Bool = false
     @State private var isMoreAboutShown: Bool = false
     
     // MARK: - Body
@@ -33,19 +33,20 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView {
-                    header
-                    
-                    skils
-                    
-                    resumes
-                }
+                    ScrollView {
+                        header
+                        
+                        skils
+                            .isHidden((profileViewModel.applicant.skills ?? []).isEmpty, remove: true)
+                        
+                        resumes
+                    }
             }
             .onAppear{
                 profileViewModel.onAppear()
             }
-            .fullScreenCover(isPresented: $createResumeViewModel.isPresented, content: { 
-                CreateResumeView(viewModel: createResumeViewModel)
+            .fullScreenCover(isPresented: $isCreateResumePresented, content: {
+                CreateResumeView(resetData: {profileViewModel.getProfileInfo()})
             })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -89,15 +90,25 @@ struct ProfileView: View {
     var header: some View {
         VStack {
             HStack(alignment: .top) {
-                KFImageView(url: profileViewModel.applicant.profilePhoto ?? "", placeholder: Image(systemName: "person"))
-                    .background(
-                        Circle()
-                            .stroke(Color.bg_sc, lineWidth: 2)
-                            .blur(radius: 4)
+                if (profileViewModel.applicant.profilePhoto ?? "").isEmpty {
+                    Image("avatar")
+                        .resizable()
+                        .padding(8)
+                        .frame(width: 72, height: 72, alignment: .center)
+                        .background(Color.gray.opacity(0.5))
+                        .cornerRadius(.infinity)
+                        .padding()
+                } else {
+                    KFImageView(
+                        url: profileViewModel.applicant.profilePhoto ?? "",
+                        placeholder:
+                            Image(systemName: "person")
                     )
-                    .frame(width: 96, height: 96, alignment: .center)
+                    .background(Color.bg_off)
+                    .frame(width: 72, height: 72, alignment: .center)
                     .cornerRadius(.infinity)
                     .padding()
+                }
                 
                 VStack(alignment: .leading) {
                     Text("\(profileViewModel.applicant.firstName ?? "") \(profileViewModel.applicant.secondName ?? "")")
@@ -119,7 +130,7 @@ struct ProfileView: View {
                     }
                     .isHidden((profileViewModel.applicant.about ?? "").isEmpty, remove: true)
                 }
-                .padding([.trailing, .top], 8)
+                .padding([.trailing, .top], 16)
                 .foregroundColor(.tx_pr)
                 
                 Spacer()
@@ -137,7 +148,7 @@ struct ProfileView: View {
     var skils: some View {
         VStack {
             HStack {
-                Text("Skils")
+                Text("Skills")
                     .font(.system(size: 22, weight: .bold))
                     .padding(.horizontal)
                 
@@ -162,11 +173,11 @@ struct ProfileView: View {
             }
             
             VStack {
-                Button(action: addResume) {
+                Button(action: presentCreateResumeView) {
                     HStack(spacing: 0) {
                         Spacer()
                         
-                        Text("Add Resume")
+                        Text("Create Resume")
                             .font(.system(size: 16, weight: .bold))
                             .padding(.trailing, 4)
                         
@@ -212,7 +223,7 @@ private extension ProfileView {
         
     }
     
-    func addResume() {
-        createResumeViewModel.isPresented.toggle()
+    func presentCreateResumeView() {
+        isCreateResumePresented.toggle()
     }
 }

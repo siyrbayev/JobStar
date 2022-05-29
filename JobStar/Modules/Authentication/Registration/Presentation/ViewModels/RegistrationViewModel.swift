@@ -44,7 +44,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var secondName: String = ""
     @Published var email: String = "" {
         didSet {
-            emailPrompt.removeAll()
+            validateEmail()
         }
     }
     
@@ -54,6 +54,8 @@ class RegistrationViewModel: ObservableObject {
     @Published var firstNamePrompt: String = ""
     @Published var secondNamePrompt: String = ""
     @Published var emailPrompt: String = ""
+    @Published var confirmEmailPrompt: String = ""
+    
     
     @Published var isPasswordValid: Bool = false
     @Published var isConfirmPasswordValid: Bool = false
@@ -100,37 +102,6 @@ extension RegistrationViewModel {
         }
     }
     
-    
-    func setEmail() {
-        isLoading = true
-        emailPrompt.removeAll()
-        
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
-        
-        guard emailTest.evaluate(with: email) else {
-            emailPrompt = "Invalid email adress"
-            isLoading = false
-            return
-        }
-        
-        DispatchQueue.global(qos: .background).async {
-            sleep(0)
-            DispatchQueue.main.async {
-                defer {
-                    self.isLoading = false
-                }
-                
-                if Bool.random() {
-                    self.isEmailValid = true
-                    self.emailPrompt.removeAll()
-                } else {
-                    self.emailPrompt = "Can not send verification code"
-                }
-            }
-        }
-    }
-    
     func setUsername() {
         let usernameRegEx = "^[a-z0-9_.-]+$"
         let usernameTest = NSPredicate(format:"SELF MATCHES[c] %@", usernameRegEx)
@@ -154,7 +125,7 @@ extension RegistrationViewModel {
 // MARK: - RegistrationViewModelNetworkProtocol
 
 extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
-   
+    
     func register() {
         isLoading = true
         let requestModel = RegisterRequestModel(firstName: firstName, secondName: secondName, username: username, email: email, password: password)
@@ -176,9 +147,9 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
                 print(error)
             }
             
-            guard let registrationResponseModel = registrationResponseModel else {
-                return
-            }
+            //            guard let registrationResponseModel = registrationResponseModel else {
+            //                return
+            //            }
             
             print(registrationResponseModel)
             self?.isRegistered = true
@@ -213,8 +184,11 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
     }
     
     func login() {
-        isLoading = true
         
+        confirmEmailPrompt = ""
+        
+        
+        isLoading = true
         var parameters: Parameters = [:]
         
         do {
@@ -232,6 +206,7 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
             }
             
             if let error = error {
+                self?.confirmEmailPrompt = "Email not confirmed"
                 print(error)
                 print(failResponse ?? "Fail response")
             }
@@ -251,6 +226,18 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
 // MARK: - Private func
 
 private extension RegistrationViewModel {
+    
+    func validateEmail() {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
+        
+        isEmailValid = emailTest.evaluate(with: email)
+        //        guard  else {
+        //            emailPrompt = "Invalid email adress"
+        //            isEmailValid = false
+        //            return
+        //        }
+    }
     
     func validatePassword() {
         

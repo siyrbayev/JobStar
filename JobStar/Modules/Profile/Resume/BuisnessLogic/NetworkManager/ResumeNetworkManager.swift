@@ -28,7 +28,7 @@ class ResumeNetworkManager: NetworkManagerProtocol {
 extension ResumeNetworkManager: ResumeNetworkManagerProtocol {
     
     func createResume(parameters: Parameters, completion: @escaping (String?) -> Void) {
-        router.request(.createResume(bodyParameters: parameters)) { [weak self] _, response, error in
+        router.request(.createResume(bodyParameters: parameters)) { [weak self] data, response, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion("Please check your network connection")

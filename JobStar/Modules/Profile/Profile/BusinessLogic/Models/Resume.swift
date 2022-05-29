@@ -128,3 +128,45 @@ struct Resume: Codable, Identifiable {
         return nil
     }
 }
+
+struct ResumeRequestModel: Codable {
+    let title: String?
+    let description: String?
+    let mobilePhone: String?
+    let email: String?
+    let createdDateTime: String?
+    let skills: [Skill]?
+    let workTimePeriods: [WorkTimePeriods]?
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case description = "description"
+        case mobilePhone = "mobilePhone"
+        case email = "email"
+        case createdDateTime = "createdDateTime"
+        case skills = "skills"
+        case workTimePeriods = "workTimePeriods"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        title = try container.decodeIfPresent(String.self, forKey: .title)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        mobilePhone = try container.decodeIfPresent(String.self, forKey: .mobilePhone)
+        email = try container.decodeIfPresent(String.self, forKey: .email)
+        createdDateTime = try? container.decode(String.self, forKey: .createdDateTime)
+        skills = try container.decodeIfPresent([Skill].self, forKey: .skills)
+        workTimePeriods = try container.decodeIfPresent([WorkTimePeriods].self, forKey: .workTimePeriods)
+    }
+    
+    init(title: String, description: String, mobilePhone: String, email: String, createdDateTime: String, skills: [Skill], workTimePeriods: [WorkTimePeriods]) {
+        self.title = title
+        self.description = description
+        self.mobilePhone = mobilePhone
+        self.email = email
+        self.createdDateTime = createdDateTime
+        self.skills = skills
+        self.workTimePeriods = workTimePeriods
+    }
+}
