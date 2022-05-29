@@ -66,7 +66,7 @@ struct SuccessRegistrationView: View {
                         .font(.system(size: 14, weight: .semibold))
                         .padding(.top)
                     
-                    Text("viewModel.email")
+                    Text(viewModel.email)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.accent_pr)
                         .font(.system(size: 18, weight: .bold))

@@ -233,7 +233,7 @@ struct SetPasswordView: View {
                 )
         }
         .padding()
-        .disabled(!viewModel.isPasswordValid)
+        .disabled(!viewModel.isPasswordValid || !viewModel.isConfirmPasswordValid)
     }
     
 }
