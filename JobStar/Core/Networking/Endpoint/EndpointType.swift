@@ -21,9 +21,11 @@ protocol EndpointTypeProtocol {
 enum NetworkEnvironment: String {
 #if targetEnvironment(simulator)
     case analyzer = "http://localhost:8001/analyzer/api"
-    case backend = "http://localhost:8080/api"
+    case backend = "http://localhost:8081"
 #else
     case analyzer = "http://192.168.0.102:8001/analyzer/api"
-    case backend = "http://192.168.0.102:8080/api"
+    case backend = "http:/172.20.10.3:8081"
+//    192.168.0.102 Home
+//    172.20.10.3 Madik Phone
 #endif
 }

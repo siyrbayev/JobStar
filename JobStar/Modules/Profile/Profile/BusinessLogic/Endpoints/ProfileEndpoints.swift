@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum PrrofileEndpoints {
+enum ApplicantEndpoints {
     
     case profileinfo
 }
 
-extension PrrofileEndpoints: EndpointTypeProtocol {
+extension ApplicantEndpoints: EndpointTypeProtocol {
     
     var environmentBaseURL: NetworkEnvironment {
         return .backend

@@ -12,8 +12,8 @@ import SwiftUI
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-//            .previewDevice("iPhone 8")
-//            .preferredColorScheme(.dark)
+            .previewDevice("iPhone 8")
+            .preferredColorScheme(.dark)
     }
 }
 
@@ -38,13 +38,12 @@ struct LoginView: View {
             VStack(spacing: 0) {
                 Group {
                     Spacer()
-                    Image("")
-                        .frame(width: 156, height: 156, alignment: .center)
-                        .background(
-                            ZStack {
-                                Color.gray
-                                Text("LOGO")
-                            }
+                    
+                        
+                    Image("Logo")
+                        .resizable()
+                        .frame(width: 196, height: 98, alignment: .center)
+                        .aspectRatio(contentMode: .fill
                         )
                     
                     Spacer()

@@ -13,6 +13,7 @@ struct CustomUITextField: UIViewRepresentable {
     @Binding var text: String
     
     var isFirstResponder: Bool = false
+    var isToolBarShown: Bool = true
     var viewMode: UITextField.ViewMode = .whileEditing
     var borderStyle: UITextField.BorderStyle = .none
     var autocapitalizationType: UITextAutocapitalizationType = .none
@@ -33,7 +34,9 @@ struct CustomUITextField: UIViewRepresentable {
         textField.autocorrectionType  = autocorrectionType
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
-        configureToolBarItems(textField)
+        if isToolBarShown {
+            configureToolBarItems(textField)
+        }
         
         return textField
     }

@@ -27,6 +27,12 @@ struct FirstLaunchView: View {
         NavigationView {
             VStack {
                 Spacer()
+                Image("Logo")
+                    .resizable()
+                    .frame(width: 196, height: 98, alignment: .center)
+                    .aspectRatio(contentMode: .fill)
+                Spacer()
+                Spacer()
                 VStack {
                     NavigationLink {
                         RegistrationView()

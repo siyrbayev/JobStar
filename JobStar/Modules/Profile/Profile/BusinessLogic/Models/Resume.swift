@@ -73,6 +73,20 @@ struct Resume: Codable, Identifiable {
     }
     
     static func mock() -> Self? {
+        let description = """
+        Приглашаем талантливых и увлеченных людей присоединиться к нашей дружной команде!
+
+        Уже около 20 лет наша группа создает интерактивные сервисы на стыке игровых и корпоративных технологий. За это время мы реализовали огромное количество разнообразных проектов в области развлечений, медицины, образования и машиностроения.
+
+        Сейчас компания открывает новые офисы и мы находимся в поиске друзей и коллег для развития наших передовых направлений и проектов.
+
+        В группе есть несколько больших платформ, которые заинтересованы в специалистах разного уровня.
+
+        Присоединяйтесь!
+
+        Работа в ROQED принесет вам массу положительных впечатлений и большое количество полезного опыта!
+
+        """
         let jsonResume = """
         {
                     "id": "\(UUID())",
@@ -108,19 +122,23 @@ struct Resume: Codable, Identifiable {
                             "skill": "Docker"
                         }
                     ],
-                    "description": "I am Middle C# Developer. ",
+                    "firstName": "Nurym",
+                    "secondName": "Siyrbayev",
+                    "description": "(description",
                     "mobilePhone": "8729482494",
                     "email": "middle_c_sharp_dev@gmail.com",
                     "title": "Middle C# Developer",
-                    "createdDateTime": "Monday, 23 May 2022 09:39",
+                    "createdDateTime": "27/05/2022",
                     "applicantId": "87b28d1f-75f7-4b9e-5006-08da3cea1919",
-                    "totalWorkTime": -1.2191780821917808
+                    "totalWorkTime": 1
                 }
         """
         let data = Data(jsonResume.utf8)
         
         do {
-            return try JSONDecoder().decode(Resume.self, from: data)
+            let decoder: JSONDecoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.dateDecodingStrategy())
+            return try decoder.decode(Resume.self, from: data)
         } catch {
             print(error.localizedDescription)
         }

@@ -160,7 +160,6 @@ struct VacancyDetailsView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .cornerRadius(12)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: dismissView) {
@@ -169,8 +168,21 @@ struct VacancyDetailsView: View {
                         .font(.system(size: 16, weight: .medium))
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Link(destination: URL(string: vacancy.linkToVacancy ?? "")!) {
+                    Image(systemName: "network")
+                        .foregroundColor(.accent_pr)
+                        .font(.system(size: 16))
+                }
+            }
         }
     }
+}
+
+// MARK: - Private func
+
+private extension VacancyDetailsView {
     
     func dismissView() {
         dismiss()
@@ -184,7 +196,7 @@ struct VacancyDetailsView: View {
         return width / 100.0 * CGFloat(percent)
     }
     
-    private func getSalary(from: Double?, to: Double?, _ replacement: String = "") -> String {
+    func getSalary(from: Double?, to: Double?, _ replacement: String = "") -> String {
         let from: String = (from ?? 0).isZero ? "" : String(format: "%.0f", from!)
         let to: String = (to ?? 0).isZero ? "" : String(format: "%.0f", to!)
         
@@ -193,10 +205,4 @@ struct VacancyDetailsView: View {
         else if to.isEmpty && !from.isEmpty { return "from \(from)" }
         else { return replacement }
     }
-}
-
-// MARK: - Private func
-
-private extension VacancyDetailsView {
-    
 }

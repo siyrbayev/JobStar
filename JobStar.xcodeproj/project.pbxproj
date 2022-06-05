@@ -22,14 +22,14 @@
 		0709B2BA2833CC030005063E /* SetUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2B92833CC030005063E /* SetUsernameView.swift */; };
 		0709B2BC2833CC2E0005063E /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2BB2833CC2E0005063E /* SetPasswordView.swift */; };
 		0709B2BE2833FF180005063E /* SetFirstNameAndSecondNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2BD2833FF180005063E /* SetFirstNameAndSecondNameView.swift */; };
-		0709B2C12834024B0005063E /* RegistrationNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2C02834024B0005063E /* RegistrationNetworkManager.swift */; };
-		0709B2C328340A5F0005063E /* RegistrationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2C228340A5F0005063E /* RegistrationEndpoints.swift */; };
+		0709B2C12834024B0005063E /* AuthenticationNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2C02834024B0005063E /* AuthenticationNetworkManager.swift */; };
+		0709B2C328340A5F0005063E /* AuthenticationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2C228340A5F0005063E /* AuthenticationEndpoints.swift */; };
 		0709B2C528340C9F0005063E /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2C428340C9F0005063E /* RegisterResponseModel.swift */; };
 		0709B2C728341BBB0005063E /* SuccessRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2C628341BBB0005063E /* SuccessRegistrationView.swift */; };
 		0709B2CB283533430005063E /* SetEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2CA283533430005063E /* SetEmailView.swift */; };
 		0709B2CD28353BE00005063E /* RegisterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2CC28353BE00005063E /* RegisterRequestModel.swift */; };
 		0709B2D52836CEBF0005063E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2D42836CEBF0005063E /* User.swift */; };
-		0709B2D728379A670005063E /* ProfileNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2D628379A670005063E /* ProfileNetworkManager.swift */; };
+		0709B2D728379A670005063E /* ApplicantNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2D628379A670005063E /* ApplicantNetworkManager.swift */; };
 		0709B2D928379BF00005063E /* ProfileEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B2D828379BF00005063E /* ProfileEndpoints.swift */; };
 		0709D4C827E35411000E0774 /* JobStarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709D4C727E35411000E0774 /* JobStarApp.swift */; };
 		0709D4CA27E35411000E0774 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709D4C927E35411000E0774 /* ContentView.swift */; };
@@ -51,6 +51,8 @@
 		074C7904283A3F1800A4C483 /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C7903283A3F1700A4C483 /* Resume.swift */; };
 		074C7906283A3FA100A4C483 /* WorkTimePeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C7905283A3FA100A4C483 /* WorkTimePeriods.swift */; };
 		074C790A283A45CC00A4C483 /* ResumeRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C7909283A45CC00A4C483 /* ResumeRowItemView.swift */; };
+		0757AC91284649DA003566E1 /* ResumeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0757AC90284649DA003566E1 /* ResumeDetailsView.swift */; };
+		0757AC932847CC24003566E1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0757AC922847CC24003566E1 /* Launch Screen.storyboard */; };
 		07855A752837F716007BDEA7 /* Vacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07855A742837F716007BDEA7 /* Vacancy.swift */; };
 		07855A772838E54E007BDEA7 /* JobStatisticRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07855A762838E54E007BDEA7 /* JobStatisticRequestModel.swift */; };
 		07855A7A2838E688007BDEA7 /* VacancyRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07855A792838E688007BDEA7 /* VacancyRowItemView.swift */; };
@@ -65,8 +67,8 @@
 		07994542283B8AA100DB659C /* VacancyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994541283B8AA100DB659C /* VacancyDetailsView.swift */; };
 		07994545283B95D000DB659C /* SkillsChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994544283B95D000DB659C /* SkillsChainView.swift */; };
 		07994547283BA9F100DB659C /* CompanyLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994546283BA9F100DB659C /* CompanyLogoImageView.swift */; };
-		07994549283C229800DB659C /* HomeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994548283C229800DB659C /* HomeNetworkManager.swift */; };
-		0799454B283C22D500DB659C /* HomeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799454A283C22D500DB659C /* HomeEndpoints.swift */; };
+		07994549283C229800DB659C /* AnalyzerNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994548283C229800DB659C /* AnalyzerNetworkManager.swift */; };
+		0799454B283C22D500DB659C /* AnalyzerEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799454A283C22D500DB659C /* AnalyzerEndpoints.swift */; };
 		0799454D283C28FD00DB659C /* AnalyzedVaccanciesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799454C283C28FD00DB659C /* AnalyzedVaccanciesResponseModel.swift */; };
 		0799454F283C295A00DB659C /* AnalyzedVacanciesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799454E283C295A00DB659C /* AnalyzedVacanciesRequestModel.swift */; };
 		07994551283C351200DB659C /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994550283C351200DB659C /* CityListView.swift */; };
@@ -134,14 +136,14 @@
 		0709B2B92833CC030005063E /* SetUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUsernameView.swift; sourceTree = "<group>"; };
 		0709B2BB2833CC2E0005063E /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
 		0709B2BD2833FF180005063E /* SetFirstNameAndSecondNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFirstNameAndSecondNameView.swift; sourceTree = "<group>"; };
-		0709B2C02834024B0005063E /* RegistrationNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNetworkManager.swift; sourceTree = "<group>"; };
-		0709B2C228340A5F0005063E /* RegistrationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEndpoints.swift; sourceTree = "<group>"; };
+		0709B2C02834024B0005063E /* AuthenticationNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNetworkManager.swift; sourceTree = "<group>"; };
+		0709B2C228340A5F0005063E /* AuthenticationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationEndpoints.swift; sourceTree = "<group>"; };
 		0709B2C428340C9F0005063E /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		0709B2C628341BBB0005063E /* SuccessRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegistrationView.swift; sourceTree = "<group>"; };
 		0709B2CA283533430005063E /* SetEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailView.swift; sourceTree = "<group>"; };
 		0709B2CC28353BE00005063E /* RegisterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequestModel.swift; sourceTree = "<group>"; };
 		0709B2D42836CEBF0005063E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0709B2D628379A670005063E /* ProfileNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNetworkManager.swift; sourceTree = "<group>"; };
+		0709B2D628379A670005063E /* ApplicantNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantNetworkManager.swift; sourceTree = "<group>"; };
 		0709B2D828379BF00005063E /* ProfileEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEndpoints.swift; sourceTree = "<group>"; };
 		0709D4C427E35410000E0774 /* JobStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0709D4C727E35411000E0774 /* JobStarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStarApp.swift; sourceTree = "<group>"; };
@@ -165,6 +167,8 @@
 		074C7903283A3F1700A4C483 /* Resume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
 		074C7905283A3FA100A4C483 /* WorkTimePeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimePeriods.swift; sourceTree = "<group>"; };
 		074C7909283A45CC00A4C483 /* ResumeRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRowItemView.swift; sourceTree = "<group>"; };
+		0757AC90284649DA003566E1 /* ResumeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDetailsView.swift; sourceTree = "<group>"; };
+		0757AC922847CC24003566E1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		07855A742837F716007BDEA7 /* Vacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vacancy.swift; sourceTree = "<group>"; };
 		07855A762838E54E007BDEA7 /* JobStatisticRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatisticRequestModel.swift; sourceTree = "<group>"; };
 		07855A792838E688007BDEA7 /* VacancyRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyRowItemView.swift; sourceTree = "<group>"; };
@@ -179,8 +183,8 @@
 		07994541283B8AA100DB659C /* VacancyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyDetailsView.swift; sourceTree = "<group>"; };
 		07994544283B95D000DB659C /* SkillsChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsChainView.swift; sourceTree = "<group>"; };
 		07994546283BA9F100DB659C /* CompanyLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLogoImageView.swift; sourceTree = "<group>"; };
-		07994548283C229800DB659C /* HomeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworkManager.swift; sourceTree = "<group>"; };
-		0799454A283C22D500DB659C /* HomeEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndpoints.swift; sourceTree = "<group>"; };
+		07994548283C229800DB659C /* AnalyzerNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerNetworkManager.swift; sourceTree = "<group>"; };
+		0799454A283C22D500DB659C /* AnalyzerEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerEndpoints.swift; sourceTree = "<group>"; };
 		0799454C283C28FD00DB659C /* AnalyzedVaccanciesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzedVaccanciesResponseModel.swift; sourceTree = "<group>"; };
 		0799454E283C295A00DB659C /* AnalyzedVacanciesRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzedVacanciesRequestModel.swift; sourceTree = "<group>"; };
 		07994550283C351200DB659C /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
@@ -332,7 +336,7 @@
 		0709B2BF283402370005063E /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				0709B2C02834024B0005063E /* RegistrationNetworkManager.swift */,
+				0709B2C02834024B0005063E /* AuthenticationNetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -380,7 +384,7 @@
 		0709B2D32836CE020005063E /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				0709B2D628379A670005063E /* ProfileNetworkManager.swift */,
+				0709B2D628379A670005063E /* ApplicantNetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -421,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				0709D4CE27E35412000E0774 /* Preview Assets.xcassets */,
+				0757AC922847CC24003566E1 /* Launch Screen.storyboard */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -504,7 +509,8 @@
 		0709D4E527E604D1000E0774 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				079945612840CB2F00DB659C /* Resume */,
+				0757AC8A2846494B003566E1 /* Resume */,
+				079945612840CB2F00DB659C /* CreateResume */,
 				079945602840CACC00DB659C /* Profile */,
 			);
 			path = Profile;
@@ -659,6 +665,38 @@
 				07C18DBA282CD938003FE505 /* SuggestionNavigationRowItemView.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		0757AC8A2846494B003566E1 /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				0757AC8B28464950003566E1 /* Presentation */,
+			);
+			path = Resume;
+			sourceTree = "<group>";
+		};
+		0757AC8B28464950003566E1 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0757AC8C2846495F003566E1 /* ViewModel */,
+				0757AC8D28464966003566E1 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0757AC8C2846495F003566E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0757AC8D28464966003566E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0757AC90284649DA003566E1 /* ResumeDetailsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		07855A732837F706007BDEA7 /* Models */ = {
@@ -830,7 +868,7 @@
 		0799453C283B64E600DB659C /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				07994548283C229800DB659C /* HomeNetworkManager.swift */,
+				07994548283C229800DB659C /* AnalyzerNetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -845,7 +883,7 @@
 		0799453E283B650000DB659C /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				0799454A283C22D500DB659C /* HomeEndpoints.swift */,
+				0799454A283C22D500DB659C /* AnalyzerEndpoints.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -883,13 +921,13 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		079945612840CB2F00DB659C /* Resume */ = {
+		079945612840CB2F00DB659C /* CreateResume */ = {
 			isa = PBXGroup;
 			children = (
 				079945622840CB4100DB659C /* Presentation */,
 				079945632840CB4900DB659C /* BuisnessLogic */,
 			);
-			path = Resume;
+			path = CreateResume;
 			sourceTree = "<group>";
 		};
 		079945622840CB4100DB659C /* Presentation */ = {
@@ -1062,7 +1100,7 @@
 		07A32A13281FE0080064609A /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				0709B2C228340A5F0005063E /* RegistrationEndpoints.swift */,
+				0709B2C228340A5F0005063E /* AuthenticationEndpoints.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -1188,7 +1226,6 @@
 				07C18DD9283153A3003FE505 /* Encoding */,
 				07C18DD82831539F003FE505 /* Service */,
 				07C18DD72831539B003FE505 /* Manager */,
-				07C18DE328315876003FE505 /* NetworkError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1196,6 +1233,7 @@
 		07C18DD72831539B003FE505 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				07C18DE328315876003FE505 /* NetworkError.swift */,
 				0709B2A72832A27B0005063E /* Result.swift */,
 				079945712840CF5A00DB659C /* NetworkManagerProtocol.swift */,
 				079945732840CF8A00DB659C /* NetworkResponse.swift */,
@@ -1409,6 +1447,7 @@
 			files = (
 				07D49F4A28206331003559D3 /* 40.json in Resources */,
 				0709D4CF27E35412000E0774 /* Preview Assets.xcassets in Resources */,
+				0757AC932847CC24003566E1 /* Launch Screen.storyboard in Resources */,
 				0709D4CC27E35412000E0774 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1482,7 +1521,7 @@
 				07A32A07281FDD530064609A /* TabBarConfigurator.swift in Sources */,
 				07994530283B488B00DB659C /* Applicant.swift in Sources */,
 				079945742840CF8A00DB659C /* NetworkResponse.swift in Sources */,
-				0709B2D728379A670005063E /* ProfileNetworkManager.swift in Sources */,
+				0709B2D728379A670005063E /* ApplicantNetworkManager.swift in Sources */,
 				07D49F3128203A8A003559D3 /* JobStatistic.swift in Sources */,
 				07994542283B8AA100DB659C /* VacancyDetailsView.swift in Sources */,
 				07D49F4028204B6A003559D3 /* City.swift in Sources */,
@@ -1500,12 +1539,12 @@
 				0709B29D28324E3F0005063E /* DataStorage.swift in Sources */,
 				0709B2B42833AF370005063E /* RegistrationViewModel.swift in Sources */,
 				0709B2B22833A3340005063E /* FirstLaunchView.swift in Sources */,
-				0709B2C328340A5F0005063E /* RegistrationEndpoints.swift in Sources */,
+				0709B2C328340A5F0005063E /* AuthenticationEndpoints.swift in Sources */,
 				07C18DE428315876003FE505 /* NetworkError.swift in Sources */,
 				0709D4FC27E61321000E0774 /* FavoritesViewModel.swift in Sources */,
 				07D49F62282BAF58003559D3 /* AvarageCompanySalary.swift in Sources */,
 				07C18DE02831551C003FE505 /* HTTPTask.swift in Sources */,
-				0799454B283C22D500DB659C /* HomeEndpoints.swift in Sources */,
+				0799454B283C22D500DB659C /* AnalyzerEndpoints.swift in Sources */,
 				0799457E2841F18B00DB659C /* AllSkillsListView.swift in Sources */,
 				0709B2C728341BBB0005063E /* SuccessRegistrationView.swift in Sources */,
 				07C18DEC2831615C003FE505 /* Router.swift in Sources */,
@@ -1520,7 +1559,7 @@
 				0799454F283C295A00DB659C /* AnalyzedVacanciesRequestModel.swift in Sources */,
 				079945792841ED2700DB659C /* SkillNetworkManager.swift in Sources */,
 				07C18DB9282CD760003FE505 /* CompanySalaryStatisticView.swift in Sources */,
-				07994549283C229800DB659C /* HomeNetworkManager.swift in Sources */,
+				07994549283C229800DB659C /* AnalyzerNetworkManager.swift in Sources */,
 				0709B29F28324E600005063E /* AppData.swift in Sources */,
 				07C92ABF2837C33B009CCAC8 /* KFImageView.swift in Sources */,
 				07D49F5B282074B9003559D3 /* CompanySalaryStatisticViewModel.swift in Sources */,
@@ -1539,7 +1578,7 @@
 				078B64082802D41300E3A257 /* ColorExtensions.swift in Sources */,
 				07855A772838E54E007BDEA7 /* JobStatisticRequestModel.swift in Sources */,
 				07994554283C897500DB659C /* JobStatisticEndpoints.swift in Sources */,
-				0709B2C12834024B0005063E /* RegistrationNetworkManager.swift in Sources */,
+				0709B2C12834024B0005063E /* AuthenticationNetworkManager.swift in Sources */,
 				0709D4F827E61049000E0774 /* SuggestionView.swift in Sources */,
 				0799452E283A6A7C00DB659C /* TagView.swift in Sources */,
 				0709D4C827E35411000E0774 /* JobStarApp.swift in Sources */,
@@ -1562,6 +1601,7 @@
 				079945822842089100DB659C /* AlertControlView.swift in Sources */,
 				0709B2C528340C9F0005063E /* RegisterResponseModel.swift in Sources */,
 				07D49F452820531E003559D3 /* View++.swift in Sources */,
+				0757AC91284649DA003566E1 /* ResumeDetailsView.swift in Sources */,
 				0709D51327E747C9000E0774 /* GraphCapsule.swift in Sources */,
 				0709D4E927E60507000E0774 /* ProfileViewModel.swift in Sources */,
 				07D49F65282BAFE3003559D3 /* JobStatisticBarChartView.swift in Sources */,
@@ -1705,7 +1745,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobStar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -1737,7 +1777,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobStar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;

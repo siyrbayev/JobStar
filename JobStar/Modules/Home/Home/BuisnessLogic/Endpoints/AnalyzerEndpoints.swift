@@ -7,16 +7,16 @@
 
 import Foundation
 
-enum HomeEndpoints {
+enum AnalyzerEndpoints {
+    case experience(bodyParameters: Parameters?)
+    case company(bodyParameters: Parameters?)
     case getAnalyzedVacancies(bodyParameters: Parameters?)
 }
 
-extension HomeEndpoints: EndpointTypeProtocol {
+extension AnalyzerEndpoints: EndpointTypeProtocol {
+    
     var environmentBaseURL: NetworkEnvironment {
-        switch self {
-        case .getAnalyzedVacancies(_):
-            return .analyzer
-        }
+        return .backend
     }
     
     var baseURL: URL {
@@ -28,6 +28,10 @@ extension HomeEndpoints: EndpointTypeProtocol {
     
     var path: String {
         switch self {
+        case .experience(_):
+            return "/experience"
+        case .company(_):
+            return "/company"
         case .getAnalyzedVacancies(_):
             return "/vacancies"
         }
@@ -35,6 +39,10 @@ extension HomeEndpoints: EndpointTypeProtocol {
     
     var httpMethod: HTTPMethod {
         switch self {
+        case .experience(_):
+            return .post
+        case .company(_):
+            return .post
         case .getAnalyzedVacancies(_):
             return .post
         }
@@ -42,15 +50,16 @@ extension HomeEndpoints: EndpointTypeProtocol {
     
     var task: HTTPTask {
         switch self {
+        case .experience(let bodyParameters):
+            return .requestParameters(bodyParameters: bodyParameters, urlParameters: nil)
+        case .company(let bodyParameters):
+            return .requestParameters(bodyParameters: bodyParameters, urlParameters: nil)
         case .getAnalyzedVacancies(let bodyParameters):
             return .requestParameters(bodyParameters: bodyParameters, urlParameters: nil)
         }
     }
     
     var headers: HTTPHeaders? {
-        switch self {
-        case .getAnalyzedVacancies(_):
-            return nil
-        }
+        return ["Authorization" : "Bearer \(AppData.jsonWebToken)"]
     }
 }

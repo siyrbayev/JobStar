@@ -222,6 +222,10 @@ struct SetPasswordView: View {
     
     var nextButton: some View {
         Button(action: register) {
+            if viewModel.isLoading {
+                ProgressView()
+                    .tint(.white)
+            } else {
             Text("Next")
                 .foregroundColor(.white)
                 .padding(.horizontal, 48)
@@ -231,6 +235,7 @@ struct SetPasswordView: View {
                         .opacity(viewModel.isPasswordValid && viewModel.isConfirmPasswordValid ? 1 : 0.5)
                         .cornerRadius(12)
                 )
+            }
         }
         .padding()
         .disabled(!viewModel.isPasswordValid || !viewModel.isConfirmPasswordValid)

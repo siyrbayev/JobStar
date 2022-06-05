@@ -14,7 +14,7 @@ protocol SkillNetworkManagerProtocol {
 
 // MARK: - CreateResumeNetworkManager
 
-class SkillNetworkManager: NetworkManagerProtocol {
+struct SkillNetworkManager: NetworkManagerProtocol {
     
     private var router: Router<SkillEndpoints>
     
@@ -28,7 +28,7 @@ class SkillNetworkManager: NetworkManagerProtocol {
 extension SkillNetworkManager: SkillNetworkManagerProtocol {
     
     func getAllSkills(completion: @escaping ([Skill]?, String?) -> Void) {
-        router.request(.getAllSkills) { [weak self] data , response, error in
+        router.request(.getAllSkills) { data , response, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(nil, "Please check your network connection")
@@ -48,7 +48,7 @@ extension SkillNetworkManager: SkillNetworkManagerProtocol {
                 return
             }
             
-            let result = self?.handleNetworkResponse(response: response)
+            let result = handleNetworkResponse(response: response)
             
             switch result {
             case .success:
@@ -65,10 +65,6 @@ extension SkillNetworkManager: SkillNetworkManagerProtocol {
             case .failure(let errorString):
                 DispatchQueue.main.async {
                     completion(nil, errorString)
-                }
-            case .none:
-                DispatchQueue.main.async {
-                    completion(nil, NetworkResponse.failed.rawValue)
                 }
             }
         }

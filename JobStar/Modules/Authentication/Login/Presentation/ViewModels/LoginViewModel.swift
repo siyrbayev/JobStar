@@ -15,7 +15,7 @@ protocol LoginViewModelProtocol {
 class LoginViewModel: ObservableObject {
     
     private var userDefaults = UserDefaults.standard
-    private let networkManager: LoginNetworkManagerProtocol!
+    private let networkManager = AuthenticationNetworkManager.shared
     
     // MARK: - Published
     
@@ -40,7 +40,7 @@ class LoginViewModel: ObservableObject {
     }
     
     init() {
-        self.networkManager = LoginNetworkManager()
+        
     }
     
     func onAppear() {

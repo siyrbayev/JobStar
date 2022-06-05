@@ -7,21 +7,18 @@
 
 import Foundation
 
-protocol ProfileNetworkManagerProtocol: AnyObject {
+protocol ApplicantNetworkManagerProtocol {
     func getProfileInfo(completion: @escaping(_ applicant: Applicant?, _ error: String?) -> Void)
 }
 
-class ProfileNetworkManager: NetworkManagerProtocol {
+class ApplicantNetworkManager: NetworkManagerProtocol {
     
-    private let router: Router<PrrofileEndpoints>
+    static let shared = ApplicantNetworkManager()
     
-    init() {
-        router = Router<PrrofileEndpoints>()
-    }
-    
+    private let router: Router<ApplicantEndpoints> = Router<ApplicantEndpoints>()
 }
 
-extension ProfileNetworkManager: ProfileNetworkManagerProtocol {
+extension ApplicantNetworkManager: ApplicantNetworkManagerProtocol {
     
     func getProfileInfo(completion: @escaping (Applicant?, String?) -> Void) {
         router.request(.profileinfo) { [weak self] data, response, error in

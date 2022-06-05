@@ -29,7 +29,7 @@ extension NetworkManagerProtocol {
             
         // MARK: - 500...599
          
-        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
+        case 500...599: return .failure(NetworkResponse.badRequest.rawValue)
             
         // MARK: - 600
          

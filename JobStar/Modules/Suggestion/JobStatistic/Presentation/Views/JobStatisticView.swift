@@ -117,7 +117,7 @@ struct JobStatisticView: View {
                             .padding(.trailing, -2)
                         }
                         
-                        CustomUITextField(placeHolder: "Search", text: $viewModel.wordToFind, isFirstResponder: true, shouldReturn: {
+                        CustomUITextField(placeHolder: "Search", text: $viewModel.wordToFind, isFirstResponder: true, isToolBarShown: false, shouldReturn: {
                             viewModel.vacancies = []
                             viewModel.totalPage = 0
                             viewModel.page = 0

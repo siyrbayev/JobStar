@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+// MARK: - Previews
+
+struct ResumeRowItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        ResumeRowItemView(resume: Resume.mock()!)
+//            .preferredColorScheme(.dark)
+            .previewDevice("iPhone 8")
+    }
+}
+
+
 struct ResumeRowItemView: View {
     
     let resume: Resume
@@ -74,13 +85,5 @@ struct ResumeRowItemView: View {
             Color.bg_sc
         )
         .cornerRadius(12)
-    }
-}
-
-struct ResumeRowItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResumeRowItemView(resume: Resume.mock()!)
-//            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 8")
     }
 }

@@ -14,8 +14,8 @@ protocol HomeViewModelProtocol {
 
 final class HomeViewModel: ObservableObject {
     
-    private let networkManager: HomeNetworkManagerProtocol
-    private let profileNetworkManager: ProfileNetworkManagerProtocol
+    private let analyzerNetworkManager = AnalyzerNetworkManager.shared
+    private let profileNetworkManager = ApplicantNetworkManager.shared
     
     // MARK: - Published
     
@@ -25,9 +25,10 @@ final class HomeViewModel: ObservableObject {
     
     @Published var resumes: [Resume] = AppData.applicant.resumes ?? []
     @Published var vacancies: [Vacancy] = []
+    @Published var vipVacancy: Vacancy = Vacancy.mock()
     @Published var vipVacancies: [Vacancy] = []
     @Published var cities: [City] = []
-    
+    @Published var cityNameToSearch: String = ""
     @Published var wordToFind: String = ""
     @Published var selectedCity: City = City(id: "159", parentId: "40", name: "Нур-Султан", areas: [])
     @Published var page: Int = 0
@@ -36,9 +37,8 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Init
     
     init() {
-        networkManager = HomeNetworkManager()
-        profileNetworkManager = ProfileNetworkManager()
         resumes = AppData.applicant.resumes ?? []
+        getVacancies()
     }
     
     func onAppear() {
@@ -80,12 +80,49 @@ extension HomeViewModel {
         self.cities = cities
     }
     
-    func onSubmitSearchBar() {
-        
-//        vipVacancies = [Vacancy.mock(), Vacancy.mock(), Vacancy.mock()]
+    func getAnalyzedVacacncies(with resume: Resume) {
         guard totalPage >= page else {
             return
         }
+        isLoading = true
+
+        guard let areaId = selectedCity.id else {
+            isLoading = false
+            return
+        }
+        var skills: [String] = []
+
+        resume.skills?.forEach({
+            if let skill = $0.skill {
+                skills.append(skill as String)
+            }
+        })
+
+        let requestModel = AnalyzedVacanciesRequestModel(area: Int(areaId), wordToFind: resumes.first?.title ?? "", skillSet: skills, page: page, itemsPerPage: nil)
+        
+        var parameters: Parameters = [:]
+
+        do {
+            parameters = try DictionaryEncoder().encode(requestModel)
+        } catch {
+            isLoading = false
+            print(error.localizedDescription)
+        }
+        guard !parameters.isEmpty else {
+            print("Parameters empty")
+            isLoading = false
+            return
+        }
+
+        getAnalyzedVacacncies(with: parameters)
+    }
+    
+    func onSubmitSearchBar() {
+        
+        guard totalPage >= page else {
+            return
+        }
+        
         isLoading = true
 
         guard let areaId = selectedCity.id else {
@@ -115,7 +152,7 @@ extension HomeViewModel {
             isLoading = false
             return
         }
-
+        
         getAnalyzedVacacncies(with: parameters)
     }
 }
@@ -123,7 +160,7 @@ extension HomeViewModel {
 extension HomeViewModel: HomeViewModelProtocol {
     
     func getAnalyzedVacacncies(with paramaters: Parameters) {
-        networkManager.getAnalyzedVacancies(parameters: paramaters) { [weak self] responseModel, error in
+        analyzerNetworkManager.getAnalyzedVacancies(parameters: paramaters) { [weak self] responseModel, error in
             defer {
                 self?.isLoading = false
             }
@@ -149,4 +186,41 @@ extension HomeViewModel: HomeViewModelProtocol {
 
 private extension HomeViewModel {
     
+    func getVacancies() {
+        vipVacancies = [Vacancy.mock()]
+        guard totalPage >= page else {
+            return
+        }
+        isLoading = true
+
+        guard let areaId = selectedCity.id else {
+            isLoading = false
+            return
+        }
+        var skills: [String] = []
+
+        AppData.applicant.skills?.forEach({
+            if let skill = $0.skill {
+                skills.append(skill as String)
+            }
+        })
+
+        let requestModel = AnalyzedVacanciesRequestModel(area: Int(areaId), wordToFind: AppData.applicant.resumes?.first?.title ?? "", skillSet: skills, page: page, itemsPerPage: nil)
+        
+        var parameters: Parameters = [:]
+
+        do {
+            parameters = try DictionaryEncoder().encode(requestModel)
+        } catch {
+            isLoading = false
+            print(error.localizedDescription)
+        }
+        guard !parameters.isEmpty else {
+            print("Parameters empty")
+            isLoading = false
+            return
+        }
+
+        getAnalyzedVacacncies(with: parameters)
+    }
 }

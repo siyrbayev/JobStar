@@ -17,7 +17,7 @@ fileprivate protocol CreateResumeViewModelProtocol {
 
 final class CreateResumeViewModel: ObservableObject {
     
-    private let networkManager: ResumeNetworkManagerProtocol
+    private let networkManager = ResumeNetworkManager.shared
     
     // MARK: - Published
     
@@ -51,7 +51,7 @@ final class CreateResumeViewModel: ObservableObject {
     // MARK: - Init
     
     init() {
-        networkManager = ResumeNetworkManager()
+//        networkManager = ResumeNetworkManager()
     }
     
     func isCreateResumeValid() -> Bool {

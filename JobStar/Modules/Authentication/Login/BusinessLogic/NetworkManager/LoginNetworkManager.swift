@@ -14,7 +14,7 @@ protocol LoginNetworkManagerProtocol {
     func login(parameters: Parameters, completion: @escaping (_ successResponse: SuccessLoginResponseModel?, _ failResponse: FailLoginResponseModel?, _ error: String?) -> Void)
 }
 
-class LoginNetworkManager: NetworkManagerProtocol {
+struct LoginNetworkManager: NetworkManagerProtocol {
     
     private let router: Router<LoginEndpoints>
     
@@ -30,7 +30,7 @@ extension LoginNetworkManager: LoginNetworkManagerProtocol {
     
     func login(parameters: Parameters, completion: @escaping (_ successResponse: SuccessLoginResponseModel?, _ failResponse: FailLoginResponseModel?, _ error: String?) -> Void) {
         
-        router.request(.login(bodyParameters: parameters)) { [weak self] data, response, error in
+        router.request(.login(bodyParameters: parameters)) { data, response, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(nil, nil, "Please check your network connection")
@@ -50,7 +50,7 @@ extension LoginNetworkManager: LoginNetworkManagerProtocol {
                 return
             }
             
-            let result = self?.handleNetworkResponse(response: response)
+            let result = handleNetworkResponse(response: response)
             
             switch result {
             case .success:
@@ -77,10 +77,6 @@ extension LoginNetworkManager: LoginNetworkManagerProtocol {
                 }
                 DispatchQueue.main.async {
                     completion(nil, nil, errorString)
-                }
-            case .none:
-                DispatchQueue.main.async {
-                    completion(nil, nil, NetworkResponse.failed.rawValue)
                 }
             }
         }

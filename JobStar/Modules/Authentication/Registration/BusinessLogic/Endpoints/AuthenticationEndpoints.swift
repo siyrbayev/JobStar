@@ -7,12 +7,13 @@
 
 import Foundation
 
-enum RegistrationEndpoints {
+enum AuthenticationEndpoints {
     case register(bodyParameters: Parameters)
+    case login(bodyParameters: Parameters)
     case checkUsername(bodyString: String)
 }
 
-extension RegistrationEndpoints: EndpointTypeProtocol {
+extension AuthenticationEndpoints: EndpointTypeProtocol {
     
     var environmentBaseURL: NetworkEnvironment {
         return .backend
@@ -28,15 +29,19 @@ extension RegistrationEndpoints: EndpointTypeProtocol {
     var path: String {
         switch self {
         case .register:
-            return "/authentication/register"
+            return "/register"
+        case .login:
+            return "/login"
         case .checkUsername:
-            return "/authentication/checkusername"
+            return "/checkusername"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
         case .register:
+            return .post
+        case .login:
             return .post
         case .checkUsername:
             return .post
@@ -47,6 +52,8 @@ extension RegistrationEndpoints: EndpointTypeProtocol {
         switch self {
         case .register(let bodyParameters):
             return .requestParameters(bodyParameters: bodyParameters, urlParameters: nil)
+        case .login(let bodyParameters):
+            return .requestParameters(bodyParameters: bodyParameters, urlParameters: nil)
         case .checkUsername(let bodyString):
             return .requestString(bodyString: bodyString)
         }
@@ -55,6 +62,8 @@ extension RegistrationEndpoints: EndpointTypeProtocol {
     var headers: HTTPHeaders? {
         switch self {
         case .register:
+            return nil
+        case .login:
             return nil
         case .checkUsername(_):
             return nil

@@ -10,12 +10,11 @@ import Foundation
 protocol CompanySalaryStatisticViewModelProtocol {
     
     func getCompany(with parameters: Parameters)
-//    func getAnalyzedVacacncies(with paramaters: Parameters)
 }
 
 final class CompanySalaryStatisticViewModel: ObservableObject {
     
-    private let networkManager: JobStatisticNetworkManagerProtocol!
+    private let networkManager = AnalyzerNetworkManager.shared
     
     // MARK: - Published
     
@@ -24,7 +23,6 @@ final class CompanySalaryStatisticViewModel: ObservableObject {
     @Published var isSearchWasSuccess: Bool = false
     
     @Published var avarageCompanySalary: AvarageCompanySalary = AvarageCompanySalary()
-//    @Published var vacancies: [Vacancy] = []
     
     @Published var wordToFind: String = ""
     @Published var cityNameToSearch: String = ""
@@ -33,7 +31,6 @@ final class CompanySalaryStatisticViewModel: ObservableObject {
     @Published var city: City = City(id: "159", parentId: "40", name: "Нур-Султан", areas: [])
     
     init() {
-        networkManager = JobStatisticNetworkManager()
         getCities()
     }
     
@@ -59,26 +56,6 @@ extension CompanySalaryStatisticViewModel: CompanySalaryStatisticViewModelProtoc
             self?.avarageCompanySalary = responseModel
         }
     }
-    
-//    func getAnalyzedVacacncies(with paramaters: Parameters) {
-//        networkManager.getAnalyzedVacancies(parameters: paramaters) { [weak self] responseModel, error in
-//            defer {
-//                self?.isVacancyListLoading = false
-//            }
-//
-//            if let error = error {
-//                print(error)
-//            }
-//
-//            guard let responseModel = responseModel,
-//                  let vacancies = responseModel.vacancies
-//            else {
-//                return
-//            }
-//
-//            self?.vacancies = vacancies
-//        }
-//    }
 }
 
 // MARK: - Public func
@@ -87,11 +64,11 @@ extension CompanySalaryStatisticViewModel {
     
     func search() {
         isJobStatisticLoading = true
-        isVacancyListLoading = true
+//        isVacancyListLoading = true
         
         guard let id = city.id, let cityId = Int(id)  else {
             isJobStatisticLoading = false
-            isVacancyListLoading = false
+//            isVacancyListLoading = false
             return
         }
         
@@ -104,15 +81,11 @@ extension CompanySalaryStatisticViewModel {
         })
         
         let averageSalaryRequestModel = JobAverageSalaryRequestModel(area: cityId, wordToFind: wordToFind)
-
-        let vacancyRequestModel = AnalyzedVacanciesRequestModel(area: Int(cityId), wordToFind: wordToFind, skillSet: skills, page: 0, itemsPerPage: 20)
         
-        var vacancyParameters: Parameters = [:]
         var averageSalaryParameters: Parameters = [:]
         
         do {
             averageSalaryParameters = try DictionaryEncoder().encode(averageSalaryRequestModel)
-            vacancyParameters = try DictionaryEncoder().encode(vacancyRequestModel)
         } catch {
             print(error.localizedDescription)
             isJobStatisticLoading = false
@@ -121,7 +94,6 @@ extension CompanySalaryStatisticViewModel {
         }
         
         getCompany(with: averageSalaryParameters)
-//        getAnalyzedVacacncies(with: vacancyParameters)
     }
     
     func setCity(_ city: City) {

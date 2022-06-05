@@ -21,8 +21,7 @@ struct PasswordPrompt: Identifiable {
 
 class RegistrationViewModel: ObservableObject {
     
-    private let registerNetworkManager: RegistrationNetworkManagerProtocol!
-    private let loginNetworkManager: LoginNetworkManagerProtocol!
+    private let networkManager = AuthenticationNetworkManager.shared
     
     @Published var isRegistered: Bool = false
     @Published var isLoading: Bool = false
@@ -30,7 +29,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var username: String = "" {
         didSet {
             if username.isEmpty {
-                registerNetworkManager.cancel()
+                networkManager.cancel()
                 isUsernameValid = false
                 withAnimation {
                     usernamePrompt = ""
@@ -69,8 +68,6 @@ class RegistrationViewModel: ObservableObject {
     }
     
     init() {
-        registerNetworkManager = RegistrationNetworkManager()
-        loginNetworkManager = LoginNetworkManager()
     }
 }
 
@@ -138,7 +135,7 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
             print(error.localizedDescription)
         }
         
-        registerNetworkManager.register(parameters: parametrs) { [weak self] registrationResponseModel, error in
+        networkManager.register(parameters: parametrs) { [weak self] registrationResponseModel, error in
             defer {
                 self?.isLoading = false
             }
@@ -160,7 +157,7 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
         isLoading = true
         let string = username
         
-        registerNetworkManager.checkUsername(string: string) { [weak self] isValid, error in
+        networkManager.checkUsername(string: string) { [weak self] isValid, error in
             defer {
                 self?.isLoading = false
             }
@@ -187,7 +184,6 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
         
         confirmEmailPrompt = ""
         
-        
         isLoading = true
         var parameters: Parameters = [:]
         
@@ -198,7 +194,7 @@ extension RegistrationViewModel: RegistrationViewModelNetworkProtocol {
             isLoading = false
         }
         
-        loginNetworkManager.login(parameters: parameters) { [weak self] successResponse, failResponse, error in
+        networkManager.login(parameters: parameters) { [weak self] successResponse, failResponse, error in
             defer {
                 withAnimation {
                     self?.isLoading = false

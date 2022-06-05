@@ -63,7 +63,7 @@ struct Vacancy: Codable, Identifiable {
         vacancy.salaryFrom = 1000000
         vacancy.salaryTo = 1200000
         vacancy.skillSet = ["ASP .NET", "REST API", "Design Patterns", "Docker"]
-        vacancy.matchBySkillSet = Double.random(in: 1...100)
+        vacancy.matchBySkillSet = Double.random(in: 80...100)
         vacancy.linkToVacancy = "link_to_vacancy"
         
         return vacancy

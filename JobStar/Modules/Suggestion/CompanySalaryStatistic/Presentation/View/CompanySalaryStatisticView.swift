@@ -114,7 +114,7 @@ struct CompanySalaryStatisticView: View {
                             .padding(.trailing, -2)
                         }
                         
-                        CustomUITextField(placeHolder: "Search", text: $viewModel.wordToFind, isFirstResponder: true, shouldReturn: {
+                        CustomUITextField(placeHolder: "Search", text: $viewModel.wordToFind, isFirstResponder: true, isToolBarShown: false, shouldReturn: {
                             onSearch()
                             toggleSearchBar()
                         })

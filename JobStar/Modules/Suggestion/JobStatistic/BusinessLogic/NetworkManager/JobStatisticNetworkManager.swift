@@ -14,7 +14,7 @@ protocol JobStatisticNetworkManagerProtocol {
     func getAnalyzedVacancies(parameters: Parameters, completion: @escaping(_ vacancies: AnalyzedVaccanciesResponseModel?, _ error: String?) -> Void)
 }
 
-class JobStatisticNetworkManager: NetworkManagerProtocol {
+struct JobStatisticNetworkManager: NetworkManagerProtocol {
     
     private let router: Router<JobStatisticEndpoints>
     
@@ -26,7 +26,7 @@ class JobStatisticNetworkManager: NetworkManagerProtocol {
 extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
     
     func getExperience(parameters: Parameters, completion: @escaping (JobAverageSalary?, String?) -> Void) {
-        router.request(.experience(bodyParameters: parameters)) { [weak self] data, response, error in
+        router.request(.experience(bodyParameters: parameters)) { data, response, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(nil, "Please check your network connection")
@@ -46,7 +46,7 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
                 return
             }
             
-            let result = self?.handleNetworkResponse(response: response)
+            let result = handleNetworkResponse(response: response)
             
             switch result {
             case .success:
@@ -64,16 +64,12 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
                 DispatchQueue.main.async {
                     completion(nil, errorString)
                 }
-            case .none:
-                DispatchQueue.main.async {
-                    completion(nil, NetworkResponse.failed.rawValue)
-                }
             }
         }
     }
     
     func getCompany(parameters: Parameters, completion: @escaping (AvarageCompanySalary?, String?) -> Void) {
-        router.request(.company(bodyParameters: parameters)) { [weak self] data, response, error in
+        router.request(.company(bodyParameters: parameters)) { data, response, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(nil, "Please check your network connection")
@@ -93,7 +89,7 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
                 return
             }
             
-            let result = self?.handleNetworkResponse(response: response)
+            let result = handleNetworkResponse(response: response)
             
             switch result {
             case .success:
@@ -111,16 +107,12 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
                 DispatchQueue.main.async {
                     completion(nil, errorString)
                 }
-            case .none:
-                DispatchQueue.main.async {
-                    completion(nil, NetworkResponse.failed.rawValue)
-                }
             }
         }
     }
     
     func getAnalyzedVacancies(parameters: Parameters, completion: @escaping (AnalyzedVaccanciesResponseModel?, String?) -> Void) {
-        router.request(.getAnalyzedVacancies(bodyParameters: parameters)) { [weak self] data, response, error in
+        router.request(.getAnalyzedVacancies(bodyParameters: parameters)) { data, response, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(nil, "Please check your network connection")
@@ -140,7 +132,7 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
                 return
             }
             
-            let result = self?.handleNetworkResponse(response: response)
+            let result = handleNetworkResponse(response: response)
             
             switch result {
             case .success:
@@ -157,10 +149,6 @@ extension JobStatisticNetworkManager: JobStatisticNetworkManagerProtocol {
             case .failure(let errorString):
                 DispatchQueue.main.async {
                     completion(nil, errorString)
-                }
-            case .none:
-                DispatchQueue.main.async {
-                    completion(nil, NetworkResponse.failed.rawValue)
                 }
             }
         }

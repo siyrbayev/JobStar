@@ -9,6 +9,7 @@ import Foundation
 
 enum ResumeEndpoints {
     case createResume(bodyParameters: Parameters)
+    case deleteResume(id: String)
 }
 
 extension ResumeEndpoints: EndpointTypeProtocol {
@@ -28,6 +29,8 @@ extension ResumeEndpoints: EndpointTypeProtocol {
         switch self {
         case .createResume(_):
             return "/resume"
+        case .deleteResume(let id):
+            return "/resume/\(id)"
         }
     }
     
@@ -35,6 +38,8 @@ extension ResumeEndpoints: EndpointTypeProtocol {
         switch self {
         case .createResume(_):
             return .post
+        case .deleteResume(_):
+            return .delete
         }
     }
     
@@ -42,12 +47,14 @@ extension ResumeEndpoints: EndpointTypeProtocol {
         switch self {
         case .createResume(let bodyParameters):
             return .requestParameters(bodyParameters: bodyParameters, urlParameters: nil)
+        case .deleteResume:
+            return .request
         }
     }
     
     var headers: HTTPHeaders? {
         switch self {
-        case .createResume(_):
+        case .createResume(_), .deleteResume(_):
             return ["Authorization" : "Bearer \(AppData.jsonWebToken)"]
         }
     }

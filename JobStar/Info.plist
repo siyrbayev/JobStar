@@ -12,5 +12,13 @@
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UILaunchScreen</key>
+		<dict>
+			<key>Launch Screen</key>
+			<string></string>
+		</dict>
+	</dict>
 </dict>
 </plist>

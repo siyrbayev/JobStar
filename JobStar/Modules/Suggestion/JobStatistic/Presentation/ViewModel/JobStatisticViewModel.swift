@@ -15,7 +15,7 @@ protocol JobStatisticViewModelProtocol {
 
 final class JobStatisticViewModel: ObservableObject {
     
-    private let networkManager: JobStatisticNetworkManagerProtocol!
+    private let networkManager = AnalyzerNetworkManager.shared
     
     // MARK: - Published
     
@@ -41,7 +41,6 @@ final class JobStatisticViewModel: ObservableObject {
         
     
     init() {
-        networkManager = JobStatisticNetworkManager()
         getCities()
     }
     

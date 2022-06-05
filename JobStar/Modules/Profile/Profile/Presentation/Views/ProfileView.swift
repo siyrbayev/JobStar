@@ -194,8 +194,14 @@ struct ProfileView: View {
                 .padding(.horizontal)
                 
                 ForEach(profileViewModel.applicant.resumes ?? []) { resume in
-                    ResumeRowItemView(resume: resume)
-                        .padding(.horizontal)
+                    NavigationLink {
+                        ResumeDetailsView(viewModel: profileViewModel, resume: resume)
+                    } label: {
+                        ResumeRowItemView(resume: resume)
+                            .padding(.horizontal)
+                    }
+
+                    
                 }
             }
         }
